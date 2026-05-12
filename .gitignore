@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Variáveis sensíveis
+.env
+.env.local
+.env.*.local
+
+# Banco SQLite (caso use em dev)
+*.db
+*.sqlite
+*.sqlite3
+
+# Downloads do crawler
+downloads/
+*.pdf
+!docs/*.pdf
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/

@@ -1,0 +1,62 @@
+services:
+  web:
+    build: .
+    container_name: farol-web
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/app:ro          # hot reload em dev (remova em prod)
+      - downloads:/app/downloads   # PDFs baixados
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  worker:
+    build: .
+    container_name: farol-worker
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/app:ro
+      - downloads:/app/downloads
+    command: celery -A app.workers.celery_app worker --loglevel=info --concurrency=2
+
+  db:
+    image: postgres:16-alpine
+    container_name: farol-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: farol
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-farol_dev}
+      POSTGRES_DB: farol_avaliador
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U farol -d farol_avaliador"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: farol-redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
+  downloads:
