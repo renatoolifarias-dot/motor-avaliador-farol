@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}{{ avaliacao.cidade }}/{{ avaliacao.uf }} — Avaliação{% endblock %}
+{% block content %}
+
+<a href="/" class="text-sm text-blue-700 hover:underline">← painel</a>
+
+<div class="flex items-start justify-between mt-2 mb-6 flex-wrap gap-3">
+  <div>
+    <h1 class="text-2xl font-bold text-blue-900">
+      {{ avaliacao.cidade }}/{{ avaliacao.uf }}
+    </h1>
+    <p class="text-gray-600 text-sm">
+      Ciclo {{ avaliacao.ciclo }} · slug <code class="bg-gray-100 px-1 rounded">{{ avaliacao.slug }}</code> · #{{ avaliacao.id }}
+    </p>
+  </div>
+  <div>
+    <span class="badge text-sm
+      {% if avaliacao.status == 'publicado' %}bg-green-100 text-green-800
+      {% elif avaliacao.status == 'aguardando_revisao' %}bg-amber-100 text-amber-800
+      {% elif avaliacao.status == 'confirmado' %}bg-blue-100 text-blue-800
+      {% else %}bg-gray-100 text-gray-700{% endif %}">
+      {{ avaliacao.status }}
+    </span>
+  </div>
+</div>
+
+<div class="grid md:grid-cols-3 gap-4 mb-6">
+  <div class="bg-white border rounded-lg p-4">
+    <div class="text-xs text-gray-500 uppercase">Indicadores</div>
+    <div class="text-2xl font-bold text-blue-900">{{ pontuados }}/{{ total }}</div>
+    <div class="text-xs text-gray-500 mt-1">pontuados</div>
+    <div class="w-full bg-gray-200 rounded h-2 mt-2">
+      <div class="bg-blue-900 h-2 rounded"
+           style="width: {% if total %}{{ (pontuados / total * 100) | round(0) }}{% else %}0{% endif %}%"></div>
+    </div>
+  </div>
+  <div class="bg-white border rounded-lg p-4">
+    <div class="text-xs text-gray-500 uppercase">Nota geral</div>
+    <div class="text-2xl font-bold text-blue-900">
+      {% if avaliacao.nota_geral is not none %}{{ "%.2f"|format(avaliacao.nota_geral) }}{% else %}—{% endif %}
+    </div>
+    <div class="text-xs text-gray-500 mt-1">
+      {{ avaliacao.classificacao or 'aguardando IA + revisão' }}
+    </div>
+  </div>
+  <div class="bg-white border rounded-lg p-4">
+    <div class="text-xs text-gray-500 uppercase">Atualizado</div>
+    <div class="text-lg font-semibold text-blue-900">
+      {{ avaliacao.atualizado_em.strftime('%d/%m/%Y %H:%M') if avaliacao.atualizado_em else '—' }}
+    </div>
+    <div class="text-xs text-gray-500 mt-1">
+      Criado em {{ avaliacao.criado_em.strftime('%d/%m/%Y') if avaliacao.criado_em else '—' }}
+    </div>
+  </div>
+</div>
+
+<!-- Pipeline -->
+<div class="bg-white border rounded-lg p-6 mb-6">
+  <h2 class="font-semibold text-blue-900 mb-3">Pipeline da avaliação</h2>
+  <div class="grid md:grid-cols-5 gap-3 text-sm">
+
+    <div class="text-center p-3 rounded border-2 {% if avaliacao.status in ['descobrindo_portais','crawleando','avaliando_ia','aguardando_revisao','confirmado','publicado'] %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
+      <div class="text-2xl mb-1">1</div>
+      <div class="font-semibold">Descobrir portais</div>
+      <div class="text-xs text-gray-500">URLs reais</div>
+    </div>
+
+    <div class="text-center p-3 rounded border-2 {% if avaliacao.status in ['crawleando','avaliando_ia','aguardando_revisao','confirmado','publicado'] %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
+      <div class="text-2xl mb-1">2</div>
+      <div class="font-semibold">Crawler</div>
+      <div class="text-xs text-gray-500">Playwright + PDFs</div>
+    </div>
+
+    <div class="text-center p-3 rounded border-2 {% if avaliacao.status in ['avaliando_ia','aguardando_revisao','confirmado','publicado'] %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
+      <div class="text-2xl mb-1">3</div>
+      <div class="font-semibold">IA avalia</div>
+      <div class="text-xs text-gray-500">122 indicadores</div>
+    </div>
+
+    <div class="text-center p-3 rounded border-2 {% if avaliacao.status in ['confirmado','publicado'] %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
+      <div class="text-2xl mb-1">4</div>
+      <div class="font-semibold">Revisar</div>
+      <div class="text-xs text-gray-500">avaliador confirma</div>
+    </div>
+
+    <div class="text-center p-3 rounded border-2 {% if avaliacao.status == 'publicado' %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
+      <div class="text-2xl mb-1">5</div>
+      <div class="font-semibold">Publicar</div>
+      <div class="text-xs text-gray-500">portal público</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bg-amber-50 border-l-4 border-amber-400 p-4 text-sm text-amber-900">
+  <strong>Sprint 1 — fundação está pronta.</strong>
+  Os botões de "Descobrir portais", "Crawler", "Avaliar com IA" entram nas próximas sprints
+  (crawler Playwright, prompts calibrados, fila Celery). Por ora, dá pra criar avaliações e cadastrar avaliadores. Os 122 itens vazios já estão no banco.
+</div>
+
+{% endblock %}

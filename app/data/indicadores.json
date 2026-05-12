@@ -1,0 +1,2361 @@
+{
+  "meta": {
+    "source": "Nota Metodologica ITGP - Executivo Municipal - 3a edicao - 2025",
+    "editor": "Transparencia Internacional Brasil",
+    "extraido_em": "2026-05-11",
+    "total_indicadores": 122,
+    "observacao": "Parser v6 - splitting por colunas. Perguntas remontadas. Algumas rubricas (0,25/0,5/0,75) podem nao ter sido capturadas. | 2026-05-12: adicionados C-TG09 e C-TG10 que tinham erro tipográfico no PDF (TG9 e TG010)."
+  },
+  "indicadores": [
+    {
+      "codigo": "L01",
+      "secao": "Geral",
+      "dim_key": "legal",
+      "dim_nome": "Legal",
+      "pergunta": "Possui norma de regulamentação da \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "L02",
+      "secao": "Geral",
+      "dim_key": "legal",
+      "dim_nome": "Legal",
+      "pergunta": "Possui norma sobre dados abertos ou Plano de \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "L03",
+      "secao": "Geral",
+      "dim_key": "legal",
+      "dim_nome": "Legal",
+      "pergunta": "Possui regulamentação de conflitos de interesses? \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "L04",
+      "secao": "Geral",
+      "dim_key": "legal",
+      "dim_nome": "Legal",
+      "pergunta": "Possui norma de proteção ao denunciante? \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "L05",
+      "secao": "Geral",
+      "dim_key": "legal",
+      "dim_nome": "Legal",
+      "pergunta": "Possui norma de regulamentação da Lei \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "L06",
+      "secao": "Geral",
+      "dim_key": "legal",
+      "dim_nome": "Legal",
+      "pergunta": "Possui regulamentação municipal da Lei \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P01",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Possui Portal da Transparência, divulgado com destaque a partir do portal principal do governo municipal? O Portal da Transparência deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner, de forma acessível e visível. O portal deve estar ativo e atualizado com, no mínimo, informações do último mês. Recomenda-se que esteja explícito a data da última atualização do portal.",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P02",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Possui Portal de Dados Abertos, divulgado com destaque a partir do portal principal do governo municipal? O Portal de Dados Abertos deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner disponível na página inicial do site da prefeitura, de forma acessível e visível. O portal deve estar ativo e atualizado com, no mínimo, informações do último mês. Recomenda-se que esteja explícito a data da última atualização do portal.",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P03",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Possui canal de acesso à informação, divulgado com destaque a partir do site principal do governo municipal? O canal de acesso à informação (como e-SIC) deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner disponível na página inicial do site da prefeitura, de forma acessível e visível. Deve estar ativo permitindo o PLATAFORMAS registro de solicitações de acesso à informação.",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P04",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Possui canal de ouvidoria, divulgado com destaque a partir do site principal do governo municipal? O canal de Ouvidoria deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner disponível na página inicial do site da prefeitura, de forma acessível e visível, além de estar ativo permitindo o registro de manifestação de ouvidoria. Deve-se explicitar que se trata de canal de Ouvidoria. Contatos genéricos dos municípios, que não indiquem explicitamente que são formas de registro de manifestações à Ouvidorias não serão considerados.",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P05",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Possui canal para a realização de denúncias de corrupção anônimas, divulgado com destaque a partir do \u0007 site principal do governo municipal? O canal de denúncias de corrupção deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner disponível na página inicial \u0007 do portal da prefeitura, de forma acessível e visível, além de estar ativo permitindo o registro de denúncias de casos de corrupção, com possibilidade de anonimato. Pode ser considerado, aqui, o registro de denúncias por outros canais, como a Ouvidoria, caso esteja indicado, explicitamente, que esse canal também recebe denúncias relacionadas à corrupção, com a possibilidade de registro anônimo. Vale reforçar que é importante que o tema/assunto “corrupção” esteja evidente no canal de registro de denúncias para considerar este indicador atendido.",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, apenas um canal geral para"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim, com um canal/campo específico"
+        }
+      ]
+    },
+    {
+      "codigo": "P06",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Possui Diário Oficial em plataforma online, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P07",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Possui serviço eletrônico de pedidos de acesso à \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P08",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Publica relatórios estatísticos de acesso à \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P09",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Publica relatórios estatísticos de ouvidoria, com \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P10",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Disponibiliza, em seu portal principal, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "P11",
+      "secao": "Geral",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas",
+      "pergunta": "Promove visualizações dos dados (painéis, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG01",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "O governo divulga informações sobre sua \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG02",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "Divulga agenda da/o chefe do executivo, com \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG03",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "Possui órgão de controle interno criado por norma, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG04",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "O órgão de controle interno está no primeiro/ \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG05",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "O órgão de controle interno possui servidores \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG06",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "O órgão de controle interno realiza planejamento \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG07",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "O órgão de controle interno publica pareceres e/ \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG08",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "O governo publica pareceres e/ou relatórios dos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG09",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "Divulga anualmente informações sobre o \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "AG10",
+      "secao": "Geral",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração Geral e Governança",
+      "pergunta": "Divulga em seu portal principal o Código de Ética \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "OBR01",
+      "secao": "Geral",
+      "dim_key": "obras_publicas",
+      "dim_nome": "Obras Públicas",
+      "pergunta": "Possui plataforma para acompanhamento de \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "OBR02",
+      "secao": "Geral",
+      "dim_key": "obras_publicas",
+      "dim_nome": "Obras Públicas",
+      "pergunta": "Possui uma plataforma para acompanhamento \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "OBR03",
+      "secao": "Geral",
+      "dim_key": "obras_publicas",
+      "dim_nome": "Obras Públicas",
+      "pergunta": "Publica o Plano de Contratações Anual de todos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "OBR04",
+      "secao": "Geral",
+      "dim_key": "obras_publicas",
+      "dim_nome": "Obras Públicas",
+      "pergunta": "Publica informações sobre os fiscais dos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "OBR05",
+      "secao": "Geral",
+      "dim_key": "obras_publicas",
+      "dim_nome": "Obras Públicas",
+      "pergunta": "Publica os estudos e respectivos relatórios \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "OBR06",
+      "secao": "Geral",
+      "dim_key": "obras_publicas",
+      "dim_nome": "Obras Públicas",
+      "pergunta": "Publica informações sobre as licenças \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "OBR07",
+      "secao": "Geral",
+      "dim_key": "obras_publicas",
+      "dim_nome": "Obras Públicas",
+      "pergunta": "Publica informações sobre a realização de \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO01",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO02",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO03",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO04",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO05",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO06",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO07",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO08",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Com relação às despesas, divulga: \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO09",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica anualmente, no Portal de Dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO10",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO11",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO12",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO13",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga, em relação às licitações, as seguintes \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO14",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO15",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga, em relação aos contratos públicos e \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO16",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO17",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Sobre a base de dados sobre contratos públicos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO18",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga, em relação às parcerias celebradas sob a \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO19",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO20",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO21",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga, em relação aos repasses de emendas \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO22",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga base dados dos valores recebidos via \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO23",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga base de dados com os valores \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO24",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Utiliza um portal, seção e/ou sistema de \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO25",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga relatório resumido de execução \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO26",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga relatório de gestão fiscal, com \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "TFO27",
+      "secao": "Geral",
+      "dim_key": "transp_financeira",
+      "dim_nome": "Transparência Financeira e Orçamentária",
+      "pergunta": "Divulga relatórios da dívida pública, com \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP01",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Possui página ou portal com informações \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP02",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Possui Conselho de Transparência ou Combate à \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP03",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Utiliza e publica sistema de gerenciamento \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP04",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Possui, pelo menos, duas redes sociais ativas, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP05",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Possui uma área destinada a notícias/ \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP06",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Oferece oportunidades de participação da população na discussão do orçamento, com \u0007 periodicidade anual? \u0007",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, mas apenas de forma presencial"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim, inclusive com participação digital/"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP07",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Publica informações sobre as consultas públicas realizadas no último ano, com: \u0007 • (i) divulgação do material relevante, • (ii) possibilidade de participação remota e • (iii) publicação dos resultados.",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim, e cumpre os 3 requisitos"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP08",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Publica informações sobre as audiências \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP09",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Divulga carta de serviços aos cidadãos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "CEP10",
+      "secao": "Geral",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação Cidadã",
+      "pergunta": "Possibilita o agendamento e/ou prestação \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-P01",
+      "secao": "Saúde",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas (Saúde)",
+      "pergunta": "O Portal da Transparência está em destaque, a \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-P02",
+      "secao": "Saúde",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde divulga \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-P03",
+      "secao": "Saúde",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas (Saúde)",
+      "pergunta": "O serviço de acesso à informação está divulgado e \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-P04",
+      "secao": "Saúde",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde disponibiliza, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-P05",
+      "secao": "Saúde",
+      "dim_key": "plataformas",
+      "dim_nome": "Plataformas (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde possui canal \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-AG01",
+      "secao": "Saúde",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração e Governança (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde divulga \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-AG02",
+      "secao": "Saúde",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração e Governança (Saúde)",
+      "pergunta": "Divulga agenda da/o Secretária/o de Saúde com \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-AG03",
+      "secao": "Saúde",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração e Governança (Saúde)",
+      "pergunta": "Possui comissão/comitê/grupo interno dedicado \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-AG04",
+      "secao": "Saúde",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração e Governança (Saúde)",
+      "pergunta": "Publica pareceres e/ou relatórios de auditorias \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-AG05",
+      "secao": "Saúde",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração e Governança (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade quadrienal, o Plano Municipal de Saúde? \u0007",
+      "peso": 2,
+      "nota_max": 0.5,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, mas não permite download ou"
+        }
+      ]
+    },
+    {
+      "codigo": "S-AG06",
+      "secao": "Saúde",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração e Governança (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade anual, a Programação Anual de Saúde \u0007 (PAS) ou Plano Anual de Saúde?",
+      "peso": 2,
+      "nota_max": 0.5,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, mas não permite download ou"
+        }
+      ]
+    },
+    {
+      "codigo": "S-AG07",
+      "secao": "Saúde",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração e Governança (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade anual, o Relatório Anual de Gestão (RAG), \u0007 com a avaliação das metas e desempenho físico e financeiro do PAS? \u0007",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, mas não permite download ou"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim, permite download e está"
+        }
+      ]
+    },
+    {
+      "codigo": "S-AG08",
+      "secao": "Saúde",
+      "dim_key": "admin_governanca",
+      "dim_nome": "Administração e Governança (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde divulga em \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-TAD01",
+      "secao": "Saúde",
+      "dim_key": "transp_dados",
+      "dim_nome": "Transparência de Dados (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde divulga dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-TAD02",
+      "secao": "Saúde",
+      "dim_key": "transp_dados",
+      "dim_nome": "Transparência de Dados (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde divulga \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-TAD03",
+      "secao": "Saúde",
+      "dim_key": "transp_dados",
+      "dim_nome": "Transparência de Dados (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde possui \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-TAD04",
+      "secao": "Saúde",
+      "dim_key": "transp_dados",
+      "dim_nome": "Transparência de Dados (Saúde)",
+      "pergunta": "Divulga todos os convênios, termos de \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-TAD05",
+      "secao": "Saúde",
+      "dim_key": "transp_dados",
+      "dim_nome": "Transparência de Dados (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde pública dados \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP01",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "O Conselho Municipal de Saúde foi criado e \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP02",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde divulga, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP03",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde possui \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP04",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde divulga, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP05",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde realizou \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP06",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde possui uma \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP07",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde utilizou \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP08",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde disponibiliza \u0007",
+      "peso": 1,
+      "nota_max": 0.75,
+      "opcoes_resposta": [
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP09",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde disponibiliza \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP10",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde realizou uma \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "S-CEP11",
+      "secao": "Saúde",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Saúde)",
+      "pergunta": "A Secretaria Municipal de Saúde divulga \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG01",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "A prefeitura possui e divulga um Plano de \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG02",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "A prefeitura possui e divulga os seguintes \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG03",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "A prefeitura possui e divulga Plano de Contingência \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG04",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "A prefeitura possui e divulga Plano Plurianual \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG05",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "A prefeitura possui e divulga Plano Plurianual \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG06",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "A prefeitura divulga informações relativas a \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG07",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "Possui órgão municipal responsável por ações de \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG08",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "O órgão municipal de proteção e defesa civil divulga informações sobre sua estrutura como: \u0007 • (i) organograma, \u0007 • (ii) funções e • (iii) contato?",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.33,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.66,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim, e cumpre os 3 requisitos"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG09",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "O órgão municipal responsável por ações de proteção e defesa civil divulga informações sobre: (i) licitações, (ii) contratos e (iii) despesas?",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.33,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.66,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim, e cumpre os 3 requisitos"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG10",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "A prefeitura possui órgão municipal de meio ambiente?",
+      "peso": 2,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG11",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "O órgão municipal de meio ambiente divulga \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-TG12",
+      "secao": "Clima",
+      "dim_key": "transp_governanca",
+      "dim_nome": "Transparência e Governança (Clima)",
+      "pergunta": "O órgão municipal de meio ambiente divulga \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP01",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "Possui órgão colegiado de Mudanças Climáticas \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP02",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "A prefeitura divulga, trimestralmente, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP03",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "Possui órgão colegiado de defesa civil ativo? \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP04",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "A prefeitura divulga, trimestralmente, \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP05",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "Possui e divulga informações sobre Núcleos \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP06",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "A prefeitura realizou a etapa municipal da \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP07",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "A prefeitura divulga informações relativas à \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP08",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "A prefeitura disponibiliza informações sobre \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP09",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "O órgão de Defesa Civil realizou ao menos três \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    },
+    {
+      "codigo": "C-CP10",
+      "secao": "Clima",
+      "dim_key": "comunicacao_participacao",
+      "dim_nome": "Comunicação e Participação (Clima)",
+      "pergunta": "O órgão municipal de meio ambiente realizou \u0007",
+      "peso": 1,
+      "nota_max": 1,
+      "opcoes_resposta": [
+        {
+          "nota": 0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 1,
+          "descricao": "Sim"
+        }
+      ]
+    }
+  ]
+}

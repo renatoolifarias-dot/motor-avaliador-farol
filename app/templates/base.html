@@ -4,15 +4,63 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>{% block title %}{{ app_name|default("Avaliador Farol Público") }}{% endblock %}</title>
+<title>{% block title %}Avaliador Farol Público{% endblock %}</title>
 <script src="https://unpkg.com/htmx.org@2.0.3"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:9999px; font-size:11px; font-weight:600; }
 </style>
 {% block head %}{% endblock %}
 </head>
-<body class="bg-gray-50 text-gray-900">
-{% block content %}{% endblock %}
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+{% if user %}
+<header class="bg-blue-900 text-white border-b-2 border-amber-400">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between flex-wrap gap-3">
+    <a href="/" class="font-bold flex items-center gap-2">⚙️ Avaliador Farol Público</a>
+    <nav class="flex items-center gap-4 text-sm flex-wrap">
+      <a href="/" class="hover:text-amber-300">Dashboard</a>
+      <a href="/nova" class="hover:text-amber-300">+ Nova avaliação</a>
+      {% if user.perfil == 'admin' %}
+        <a href="/admin/usuarios" class="hover:text-amber-300">Usuários</a>
+        <a href="/configuracoes/" class="hover:text-amber-300">⚙ Config</a>
+      {% endif %}
+      <span class="text-gray-300 text-xs">
+        {{ user.nome_completo }} <span class="badge bg-amber-400 text-blue-900">{{ user.perfil }}</span>
+      </span>
+      <a href="/logout" class="text-amber-300 hover:underline">sair</a>
+    </nav>
+  </div>
+</header>
+
+{% if user.precisa_trocar_senha and request.url.path != '/trocar-senha' %}
+<div class="bg-amber-100 border-l-4 border-amber-500 px-6 py-2 text-sm">
+  <strong>Atenção:</strong> sua senha ainda é a temporária inicial.
+  <a href="/trocar-senha" class="text-amber-700 underline font-semibold">Troque agora →</a>
+</div>
+{% endif %}
+{% endif %}
+
+<main class="flex-1 max-w-6xl mx-auto w-full px-6 py-6">
+  {% set flashes = request.state.consome_flash(request) %}
+  {% if flashes %}
+    {% for f in flashes %}
+      <div class="mb-3 px-4 py-3 rounded border-l-4
+        {% if f.tipo == 'sucesso' %}bg-green-50 border-green-500 text-green-800
+        {% elif f.tipo == 'erro' %}bg-red-50 border-red-500 text-red-800
+        {% elif f.tipo == 'aviso' %}bg-amber-50 border-amber-500 text-amber-800
+        {% else %}bg-blue-50 border-blue-500 text-blue-800{% endif %}">
+        {{ f.msg | safe }}
+      </div>
+    {% endfor %}
+  {% endif %}
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="bg-gray-800 text-gray-400 text-xs text-center py-3 mt-auto">
+  Avaliador Farol Público · Instituto Nossa Ilhéus · Produção NIBS · Ciclo 2026
+</footer>
+
 </body>
 </html>

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Usuários — Admin{% endblock %}
+{% block content %}
+
+<h1 class="text-2xl font-bold text-blue-900 mb-1">Avaliadores</h1>
+<p class="text-gray-600 text-sm mb-6">Cadastrar e gerenciar quem pode usar o sistema.</p>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+  <!-- Form de novo -->
+  <div class="md:col-span-1">
+    <div class="bg-white border rounded-lg p-4">
+      <h2 class="font-semibold text-blue-900 mb-3">Cadastrar avaliador</h2>
+      <form method="POST" action="/admin/usuarios/criar" class="space-y-3 text-sm">
+        <input type="hidden" name="csrf_token" value="{{ csrf }}">
+        <div>
+          <label class="block text-gray-600 text-xs mb-1">Username (sem acento)</label>
+          <input name="username" required pattern="[a-z0-9._-]+"
+                 class="w-full border rounded px-3 py-2" placeholder="ex: maria.silva">
+        </div>
+        <div>
+          <label class="block text-gray-600 text-xs mb-1">Nome completo</label>
+          <input name="nome_completo" required class="w-full border rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-gray-600 text-xs mb-1">E-mail institucional</label>
+          <input type="email" name="email" required class="w-full border rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-gray-600 text-xs mb-1">Perfil</label>
+          <select name="perfil" class="w-full border rounded px-3 py-2">
+            <option value="avaliador">Avaliador</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <button class="w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-2 rounded">
+          Criar (com senha temp)
+        </button>
+        <p class="text-xs text-gray-500">O sistema gera uma senha temporária e a mostra após o cadastro. Anote e repasse — o avaliador troca no 1º login.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabela -->
+  <div class="md:col-span-2">
+    <div class="bg-white border rounded-lg overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-xs text-gray-500 uppercase">
+          <tr>
+            <th class="text-left px-3 py-2">User</th>
+            <th class="text-left px-3 py-2">Nome</th>
+            <th class="text-left px-3 py-2">Perfil</th>
+            <th class="text-left px-3 py-2">Status</th>
+            <th class="text-right px-3 py-2">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for u in usuarios %}
+          <tr class="border-t {% if not u.ativo %}opacity-60{% endif %}">
+            <td class="px-3 py-2 font-mono text-xs">{{ u.username }}</td>
+            <td class="px-3 py-2">
+              {{ u.nome_completo }}
+              <div class="text-xs text-gray-500">{{ u.email }}</div>
+            </td>
+            <td class="px-3 py-2">
+              <span class="badge {% if u.perfil == 'admin' %}bg-blue-100 text-blue-800{% else %}bg-gray-100 text-gray-700{% endif %}">
+                {{ u.perfil }}
+              </span>
+            </td>
+            <td class="px-3 py-2">
+              {% if u.precisa_trocar_senha %}
+                <span class="badge bg-amber-100 text-amber-800">senha temp</span>
+              {% elif u.ativo %}
+                <span class="badge bg-green-100 text-green-800">ativo</span>
+              {% else %}
+                <span class="badge bg-red-100 text-red-800">inativo</span>
+              {% endif %}
+            </td>
+            <td class="px-3 py-2 text-right space-x-1">
+              {% if u.id != user.id %}
+                <form method="POST" action="/admin/usuarios/{{ u.id }}/toggle" class="inline">
+                  <input type="hidden" name="csrf_token" value="{{ csrf }}">
+                  <button class="text-xs text-gray-600 hover:text-red-600">
+                    {{ 'desativar' if u.ativo else 'ativar' }}
+                  </button>
+                </form>
+                <form method="POST" action="/admin/usuarios/{{ u.id }}/reset-senha" class="inline"
+                      onsubmit="return confirm('Gerar nova senha temporária para {{ u.username }}?')">
+                  <input type="hidden" name="csrf_token" value="{{ csrf }}">
+                  <button class="text-xs text-amber-700 hover:underline">reset senha</button>
+                </form>
+              {% else %}
+                <span class="text-xs text-gray-400">(você)</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

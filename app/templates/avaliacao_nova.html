@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Nova avaliação{% endblock %}
+{% block content %}
+
+<a href="/" class="text-sm text-blue-700 hover:underline">← voltar ao painel</a>
+
+<h1 class="text-2xl font-bold text-blue-900 mt-2 mb-1">Nova avaliação</h1>
+<p class="text-gray-600 text-sm mb-6">Cria o esqueleto da avaliação com os 122 indicadores ITGP prontos pra serem trabalhados.</p>
+
+<div class="bg-white border rounded-lg p-6 max-w-xl">
+  <form method="POST" action="/nova" class="space-y-4 text-sm">
+    <input type="hidden" name="csrf_token" value="{{ csrf }}">
+
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Município</label>
+      <input name="cidade" required autofocus
+             class="w-full border rounded px-3 py-2"
+             placeholder="ex: Ilhéus">
+      <p class="text-xs text-gray-500 mt-1">Pode usar acentos. O sistema gera o slug automaticamente.</p>
+    </div>
+
+    <div class="flex gap-3">
+      <div class="w-24">
+        <label class="block text-gray-700 font-medium mb-1">UF</label>
+        <input name="uf" required maxlength="2" pattern="[A-Za-z]{2}"
+               class="w-full border rounded px-3 py-2 uppercase"
+               value="BA">
+      </div>
+      <div class="flex-1">
+        <label class="block text-gray-700 font-medium mb-1">Ciclo</label>
+        <select name="ciclo" class="w-full border rounded px-3 py-2">
+          <option value="2026" selected>2026 (3ª edição ITGP)</option>
+          <option value="2027">2027</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="pt-3 flex justify-between items-center">
+      <a href="/" class="text-sm text-gray-500 hover:underline">cancelar</a>
+      <button class="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-5 py-2 rounded">
+        Criar avaliação →
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-400 text-sm text-amber-900 max-w-xl">
+  <strong>O que acontece depois:</strong>
+  <ol class="list-decimal ml-5 mt-1 space-y-1">
+    <li>O sistema cria 122 itens vazios (1 por indicador ITGP).</li>
+    <li>Na tela da avaliação você dispara a <strong>descoberta de portais</strong> (procura urls reais dos sites oficiais).</li>
+    <li>O <strong>crawler</strong> baixa as páginas (com Playwright + PDFs).</li>
+    <li>A <strong>IA</strong> avalia cada indicador com base nas evidências.</li>
+    <li>Você <strong>revisa, confirma e publica</strong> — você não dá nota, só confirma.</li>
+  </ol>
+</div>
+
+{% endblock %}
