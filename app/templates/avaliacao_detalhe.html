@@ -17,6 +17,7 @@
     {% if avaliacao.status == 'publicado' %}bg-green-100 text-green-800
     {% elif avaliacao.status in ['aguardando_revisao','crawleando','avaliando_ia'] %}bg-amber-100 text-amber-800
     {% elif avaliacao.status == 'confirmado' %}bg-blue-100 text-blue-800
+    {% elif avaliacao.status == 'crawleado' %}bg-green-100 text-green-800
     {% elif avaliacao.status == 'descobrindo_portais' %}bg-purple-100 text-purple-800
     {% else %}bg-gray-100 text-gray-700{% endif %}">
     {{ avaliacao.status }}

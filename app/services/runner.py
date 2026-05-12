@@ -139,6 +139,7 @@ async def crawlear_avaliacao(
             f"({sum(1 for p in paginas if p.tipo=='pdf')} PDFs, "
             f"~{sum(len(p.texto) for p in paginas)/1024:.1f} KB de texto)"
         )
+        await _set_status(session, avaliacao_id, "crawleado")
 
     return {
         "paginas_capturadas": len(paginas),
