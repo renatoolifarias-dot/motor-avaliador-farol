@@ -13,22 +13,20 @@
       Ciclo {{ avaliacao.ciclo }} · slug <code class="bg-gray-100 px-1 rounded">{{ avaliacao.slug }}</code> · #{{ avaliacao.id }}
     </p>
   </div>
-  <div>
-    <span class="badge text-sm
-      {% if avaliacao.status == 'publicado' %}bg-green-100 text-green-800
-      {% elif avaliacao.status == 'aguardando_revisao' %}bg-amber-100 text-amber-800
-      {% elif avaliacao.status == 'confirmado' %}bg-blue-100 text-blue-800
-      {% else %}bg-gray-100 text-gray-700{% endif %}">
-      {{ avaliacao.status }}
-    </span>
-  </div>
+  <span class="badge text-sm
+    {% if avaliacao.status == 'publicado' %}bg-green-100 text-green-800
+    {% elif avaliacao.status in ['aguardando_revisao','crawleando','avaliando_ia'] %}bg-amber-100 text-amber-800
+    {% elif avaliacao.status == 'confirmado' %}bg-blue-100 text-blue-800
+    {% elif avaliacao.status == 'descobrindo_portais' %}bg-purple-100 text-purple-800
+    {% else %}bg-gray-100 text-gray-700{% endif %}">
+    {{ avaliacao.status }}
+  </span>
 </div>
 
 <div class="grid md:grid-cols-3 gap-4 mb-6">
   <div class="bg-white border rounded-lg p-4">
     <div class="text-xs text-gray-500 uppercase">Indicadores</div>
     <div class="text-2xl font-bold text-blue-900">{{ pontuados }}/{{ total }}</div>
-    <div class="text-xs text-gray-500 mt-1">pontuados</div>
     <div class="w-full bg-gray-200 rounded h-2 mt-2">
       <div class="bg-blue-900 h-2 rounded"
            style="width: {% if total %}{{ (pontuados / total * 100) | round(0) }}{% else %}0{% endif %}%"></div>
@@ -39,63 +37,166 @@
     <div class="text-2xl font-bold text-blue-900">
       {% if avaliacao.nota_geral is not none %}{{ "%.2f"|format(avaliacao.nota_geral) }}{% else %}—{% endif %}
     </div>
-    <div class="text-xs text-gray-500 mt-1">
-      {{ avaliacao.classificacao or 'aguardando IA + revisão' }}
-    </div>
+    <div class="text-xs text-gray-500 mt-1">{{ avaliacao.classificacao or 'aguardando IA + revisão' }}</div>
   </div>
   <div class="bg-white border rounded-lg p-4">
-    <div class="text-xs text-gray-500 uppercase">Atualizado</div>
-    <div class="text-lg font-semibold text-blue-900">
-      {{ avaliacao.atualizado_em.strftime('%d/%m/%Y %H:%M') if avaliacao.atualizado_em else '—' }}
-    </div>
+    <div class="text-xs text-gray-500 uppercase">Páginas no dossiê</div>
+    <div class="text-2xl font-bold text-blue-900">{{ paginas|length }}</div>
     <div class="text-xs text-gray-500 mt-1">
-      Criado em {{ avaliacao.criado_em.strftime('%d/%m/%Y') if avaliacao.criado_em else '—' }}
+      {{ seeds|length }} portais semente · {{ (paginas|selectattr('tipo','equalto','pdf')|list)|length }} PDFs
     </div>
   </div>
 </div>
 
-<!-- Pipeline -->
+<!-- Pipeline + ações -->
 <div class="bg-white border rounded-lg p-6 mb-6">
-  <h2 class="font-semibold text-blue-900 mb-3">Pipeline da avaliação</h2>
-  <div class="grid md:grid-cols-5 gap-3 text-sm">
-
-    <div class="text-center p-3 rounded border-2 {% if avaliacao.status in ['descobrindo_portais','crawleando','avaliando_ia','aguardando_revisao','confirmado','publicado'] %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
+  <h2 class="font-semibold text-blue-900 mb-4">Pipeline da avaliação</h2>
+  <div class="grid md:grid-cols-5 gap-3 text-sm mb-5">
+    <div class="text-center p-3 rounded border-2 {% if seeds %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
       <div class="text-2xl mb-1">1</div>
-      <div class="font-semibold">Descobrir portais</div>
-      <div class="text-xs text-gray-500">URLs reais</div>
+      <div class="font-semibold">Portais</div>
+      <div class="text-xs text-gray-500">{{ seeds|length }} descobertos</div>
     </div>
-
-    <div class="text-center p-3 rounded border-2 {% if avaliacao.status in ['crawleando','avaliando_ia','aguardando_revisao','confirmado','publicado'] %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
+    <div class="text-center p-3 rounded border-2 {% if paginas %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
       <div class="text-2xl mb-1">2</div>
       <div class="font-semibold">Crawler</div>
-      <div class="text-xs text-gray-500">Playwright + PDFs</div>
+      <div class="text-xs text-gray-500">{{ paginas|length }} páginas</div>
     </div>
-
-    <div class="text-center p-3 rounded border-2 {% if avaliacao.status in ['avaliando_ia','aguardando_revisao','confirmado','publicado'] %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
+    <div class="text-center p-3 rounded border-2 {% if pontuados > 0 %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
       <div class="text-2xl mb-1">3</div>
       <div class="font-semibold">IA avalia</div>
-      <div class="text-xs text-gray-500">122 indicadores</div>
+      <div class="text-xs text-gray-500">{{ pontuados }}/{{ total }}</div>
     </div>
-
     <div class="text-center p-3 rounded border-2 {% if avaliacao.status in ['confirmado','publicado'] %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
       <div class="text-2xl mb-1">4</div>
       <div class="font-semibold">Revisar</div>
-      <div class="text-xs text-gray-500">avaliador confirma</div>
     </div>
-
     <div class="text-center p-3 rounded border-2 {% if avaliacao.status == 'publicado' %}border-green-500 bg-green-50{% else %}border-gray-200{% endif %}">
       <div class="text-2xl mb-1">5</div>
       <div class="font-semibold">Publicar</div>
-      <div class="text-xs text-gray-500">portal público</div>
     </div>
+  </div>
 
+  <div class="flex flex-wrap gap-3">
+    <form method="POST" action="/avaliacoes/{{ avaliacao.id }}/descobrir" class="inline">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <button class="bg-blue-900 hover:bg-blue-800 text-white text-sm px-4 py-2 rounded font-semibold">
+        🔍 {% if seeds %}Re-descobrir portais{% else %}Descobrir portais{% endif %}
+      </button>
+    </form>
+    {% if seeds %}
+    <form method="POST" action="/avaliacoes/{{ avaliacao.id }}/crawl" class="inline"
+          onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').innerText='⏳ Iniciando…';">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <button class="bg-amber-500 hover:bg-amber-600 text-white text-sm px-4 py-2 rounded font-semibold">
+        🕷️ {% if paginas %}Re-crawlear (Playwright){% else %}Crawlear com Playwright{% endif %}
+      </button>
+    </form>
+    {% endif %}
+    {% if paginas %}
+    <button disabled class="bg-gray-300 text-gray-500 text-sm px-4 py-2 rounded font-semibold cursor-not-allowed">
+      🤖 Avaliar com IA (Sprint 3)
+    </button>
+    {% endif %}
   </div>
 </div>
 
-<div class="bg-amber-50 border-l-4 border-amber-400 p-4 text-sm text-amber-900">
-  <strong>Sprint 1 — fundação está pronta.</strong>
-  Os botões de "Descobrir portais", "Crawler", "Avaliar com IA" entram nas próximas sprints
-  (crawler Playwright, prompts calibrados, fila Celery). Por ora, dá pra criar avaliações e cadastrar avaliadores. Os 122 itens vazios já estão no banco.
+{% if seeds %}
+<div class="bg-white border rounded-lg overflow-hidden mb-6">
+  <div class="px-4 py-3 bg-gray-50 border-b font-semibold text-blue-900">
+    Portais descobertos (sementes do crawler)
+  </div>
+  <table class="w-full text-sm">
+    <thead class="bg-gray-50 text-xs text-gray-500 uppercase">
+      <tr>
+        <th class="text-left px-3 py-2">URL</th>
+        <th class="text-left px-3 py-2">Status</th>
+        <th class="text-left px-3 py-2">Título</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for s in seeds %}
+      <tr class="border-t">
+        <td class="px-3 py-2">
+          <a href="{{ s.url_final }}" target="_blank" rel="noopener noreferrer"
+             class="text-blue-700 hover:underline text-xs font-mono">{{ s.url_final|truncate(70) }}</a>
+        </td>
+        <td class="px-3 py-2">
+          <span class="badge {% if s.status_code == 200 %}bg-green-100 text-green-800
+                              {% elif s.status_code in [403,429,503] %}bg-amber-100 text-amber-800
+                              {% else %}bg-gray-100 text-gray-600{% endif %}">
+            {{ s.status_code }}
+          </span>
+        </td>
+        <td class="px-3 py-2 text-gray-700">{{ (s.titulo or '—')|truncate(60) }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
 </div>
+{% endif %}
+
+{% if paginas %}
+<div class="bg-white border rounded-lg overflow-hidden mb-6">
+  <div class="px-4 py-3 bg-gray-50 border-b font-semibold text-blue-900 flex justify-between">
+    <span>Páginas capturadas pelo crawler</span>
+    <span class="text-xs text-gray-500 font-normal">
+      {{ paginas|length }} páginas · {{ (paginas|selectattr('tipo','equalto','pdf')|list)|length }} PDFs
+    </span>
+  </div>
+  <table class="w-full text-sm">
+    <thead class="bg-gray-50 text-xs text-gray-500 uppercase">
+      <tr>
+        <th class="text-left px-3 py-2">URL</th>
+        <th class="text-left px-3 py-2">Tipo</th>
+        <th class="text-left px-3 py-2">Profundidade</th>
+        <th class="text-right px-3 py-2">Tamanho</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for p in paginas[:50] %}
+      <tr class="border-t hover:bg-blue-50">
+        <td class="px-3 py-2">
+          <a href="{{ p.url_final }}" target="_blank" rel="noopener noreferrer"
+             class="text-blue-700 hover:underline text-xs font-mono">{{ p.url_final|truncate(80) }}</a>
+          {% if p.titulo %}<div class="text-xs text-gray-500">{{ p.titulo|truncate(70) }}</div>{% endif %}
+        </td>
+        <td class="px-3 py-2">
+          <span class="badge {% if p.tipo == 'pdf' %}bg-red-100 text-red-800{% else %}bg-blue-100 text-blue-800{% endif %}">
+            {{ p.tipo }}
+          </span>
+        </td>
+        <td class="px-3 py-2 text-gray-600">nível {{ p.profundidade }}</td>
+        <td class="px-3 py-2 text-right text-gray-500 font-mono text-xs">
+          {{ ((p.texto or '')|length / 1024)|round(1) }} KB
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% if paginas|length > 50 %}
+  <div class="px-4 py-2 text-xs text-gray-500 bg-gray-50 border-t">
+    Mostrando 50 de {{ paginas|length }} páginas.
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if logs %}
+<div class="bg-white border rounded-lg overflow-hidden">
+  <div class="px-4 py-3 bg-gray-50 border-b font-semibold text-blue-900">Log de eventos</div>
+  <div class="divide-y text-sm font-mono">
+    {% for l in logs %}
+    <div class="px-3 py-2">
+      <span class="text-xs text-gray-500 mr-2">{{ l.criado_em.strftime('%d/%m %H:%M:%S') if l.criado_em else '—' }}</span>
+      <span class="badge {% if l.nivel == 'error' %}bg-red-100 text-red-800
+                          {% elif l.nivel == 'warn' %}bg-amber-100 text-amber-800
+                          {% else %}bg-gray-100 text-gray-700{% endif %}">{{ l.nivel }}</span>
+      <span class="ml-2">{{ l.mensagem }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
 
 {% endblock %}

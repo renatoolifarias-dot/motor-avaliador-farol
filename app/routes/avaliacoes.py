@@ -117,11 +117,81 @@ async def detalhar(aid: int, request: Request, user=Depends(exige_login), sessio
         select(func.count()).select_from(AvaliacaoItem)
         .where(AvaliacaoItem.avaliacao_id == aid, AvaliacaoItem.nota.is_not(None))
     )
+
+    # Sprint 2: portais semente + páginas crawleadas
+    seeds = (await session.scalars(
+        select(AvaliacaoPagina)
+        .where(AvaliacaoPagina.avaliacao_id == aid, AvaliacaoPagina.profundidade == -1)
+        .order_by(AvaliacaoPagina.id)
+    )).all()
+    paginas = (await session.scalars(
+        select(AvaliacaoPagina)
+        .where(AvaliacaoPagina.avaliacao_id == aid, AvaliacaoPagina.profundidade >= 0)
+        .order_by(AvaliacaoPagina.profundidade, AvaliacaoPagina.id)
+    )).all()
+    logs = (await session.scalars(
+        select(AvaliacaoLog)
+        .where(AvaliacaoLog.avaliacao_id == aid)
+        .order_by(AvaliacaoLog.criado_em.desc())
+        .limit(15)
+    )).all()
+
     return templates.TemplateResponse(request, "avaliacao_detalhe.html", {
         "request": request,
         "user": user,
         "avaliacao": av,
         "total": total or 0,
         "pontuados": pontuados or 0,
+        "seeds": seeds,
+        "paginas": paginas,
+        "logs": logs,
         "csrf": csrf_token(request),
     })
+
+
+# =========================================================
+# Sprint 2 — descobrir portais + crawler
+# =========================================================
+from fastapi import BackgroundTasks
+from app.services.runner import descobrir_portais, crawlear_avaliacao
+from app.models import AvaliacaoPagina, AvaliacaoLog
+
+
+@router.post("/avaliacoes/{aid}/descobrir")
+async def descobrir_post(
+    aid: int, request: Request,
+    csrf: str = Form(..., alias="csrf_token"),
+    user=Depends(exige_login),
+):
+    if not csrf_verifica(request, csrf):
+        flash(request, "erro", "CSRF inválido")
+        return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+    try:
+        res = await descobrir_portais(aid)
+        if "erro" in res:
+            flash(request, "erro", f"Falha: {res['erro']}")
+        else:
+            flash(request, "sucesso",
+                  f"🔍 {res['portais_encontrados']} portais descobertos "
+                  f"({res['protegidos_cloudflare']} protegidos por Cloudflare — Playwright vai cuidar).")
+    except Exception as e:
+        flash(request, "erro", f"Erro no descobridor: {str(e)[:200]}")
+    return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+
+
+@router.post("/avaliacoes/{aid}/crawl")
+async def crawl_post(
+    aid: int, request: Request, background: BackgroundTasks,
+    csrf: str = Form(..., alias="csrf_token"),
+    user=Depends(exige_login),
+):
+    if not csrf_verifica(request, csrf):
+        flash(request, "erro", "CSRF inválido")
+        return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+
+    # Dispara em background — pode levar minutos
+    background.add_task(crawlear_avaliacao, aid, 60, 2)
+    flash(request, "info",
+          "🕷️ Crawler iniciado em segundo plano. "
+          "Atualize a página em ~2 minutos pra ver as páginas capturadas.")
+    return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
