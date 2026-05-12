@@ -95,9 +95,13 @@
     </form>
     {% endif %}
     {% if paginas %}
-    <button disabled class="bg-gray-300 text-gray-500 text-sm px-4 py-2 rounded font-semibold cursor-not-allowed">
-      🤖 Avaliar com IA (Sprint 3)
-    </button>
+    <form method="POST" action="/avaliacoes/{{ avaliacao.id }}/avaliar" class="inline"
+          onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').innerText='⏳ Disparando…';">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <button class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded font-semibold">
+        🤖 {% if pontuados > 0 %}Re-avaliar com IA{% else %}Avaliar com IA{% endif %}
+      </button>
+    </form>
     {% endif %}
   </div>
 </div>

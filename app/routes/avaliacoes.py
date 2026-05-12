@@ -195,3 +195,43 @@ async def crawl_post(
           "🕷️ Crawler iniciado em segundo plano. "
           "Atualize a página em ~2 minutos pra ver as páginas capturadas.")
     return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+
+
+@router.post("/avaliacoes/{aid}/avaliar")
+async def avaliar_post(
+    aid: int, request: Request, background: BackgroundTasks,
+    csrf: str = Form(..., alias="csrf_token"),
+    user=Depends(exige_login),
+    session: AsyncSession = Depends(get_session),
+):
+    if not csrf_verifica(request, csrf):
+        flash(request, "erro", "CSRF inválido")
+        return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+
+    # Pré-checagens
+    av = await session.get(Avaliacao, aid)
+    if not av:
+        raise HTTPException(404)
+
+    paginas = await session.scalar(
+        select(func.count()).select_from(AvaliacaoPagina)
+        .where(AvaliacaoPagina.avaliacao_id == aid, AvaliacaoPagina.profundidade >= 0)
+    )
+    if not paginas:
+        flash(request, "erro", "Rode o crawler antes — sem dossiê não há o que a IA avaliar.")
+        return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+
+    # Checagem da API key
+    from sqlalchemy import text as _text
+    r = await session.execute(_text("SELECT valor FROM configs WHERE chave='anthropic_api_key'"))
+    row = r.first()
+    if not (row and row[0]):
+        flash(request, "erro", "Configure a chave da API Anthropic em /configuracoes/")
+        return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+
+    from app.services.avaliador import avaliar_avaliacao
+    background.add_task(avaliar_avaliacao, aid)
+    flash(request, "info",
+          "🤖 Avaliação por IA iniciada (~5 a 15 min). "
+          "Atualize a página pra acompanhar; cada dimensão pontua ~10 indicadores por vez.")
+    return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
