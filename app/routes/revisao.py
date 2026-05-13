@@ -177,3 +177,49 @@ async def confirmar(
 
     flash(request, "sucesso", f"✓ Avaliação confirmada · Nota {nota_geral:.2f}/100 · Classificação {classif}")
     return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+
+
+
+@router.post("/avaliacoes/{aid}/publicar")
+async def publicar(
+    aid: int, request: Request,
+    csrf: str = Form(..., alias="csrf_token"),
+    user=Depends(exige_login),
+    session: AsyncSession = Depends(get_session),
+):
+    if not csrf_verifica(request, csrf):
+        flash(request, "erro", "CSRF inválido")
+        return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+    av = await session.get(Avaliacao, aid)
+    if not av:
+        raise HTTPException(404)
+    if av.status != "confirmado":
+        flash(request, "erro", "Confirme a avaliação antes de publicar.")
+        return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+    from app.services.publicador import publicar_via_ftp
+    try:
+        res = await publicar_via_ftp(aid)
+        if res.get("upload") == "ok":
+            av.status = "publicado"
+            av.publicado_em = now_bahia()
+            av.url_publica = res["url_publica"]
+            await session.commit()
+            flash(request, "sucesso", f"✓ Publicado em <a href=\"{res['url_publica']}\" target=\"_blank\" class=\"underline\">{res['url_publica']}</a>")
+        else:
+            flash(request, "aviso",
+                  f"HTML gerado em {res['html_local']} mas FTP não enviou — "
+                  f"motivo: {res.get('motivo','desconhecido')}. Configure FTP_* nas variáveis do Coolify.")
+    except Exception as e:
+        flash(request, "erro", f"Erro: {type(e).__name__}: {str(e)[:200]}")
+    return RedirectResponse(f"/avaliacoes/{aid}", status_code=303)
+
+
+@router.get("/avaliacoes/{aid}/preview", response_class=HTMLResponse)
+async def preview(
+    aid: int, user=Depends(exige_login),
+):
+    """Gera e exibe o relatório sem enviar pro FTP (preview)."""
+    from app.services.publicador import gerar_html
+    caminho, slug = await gerar_html(aid)
+    html = open(caminho).read()
+    return HTMLResponse(html)

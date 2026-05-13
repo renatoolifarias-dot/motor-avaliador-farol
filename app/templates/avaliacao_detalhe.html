@@ -108,6 +108,19 @@
        class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded font-semibold no-underline">
       📋 Revisar {{ pontuados }} itens
     </a>
+    <a href="/avaliacoes/{{ avaliacao.id }}/preview" target="_blank"
+       class="bg-gray-700 hover:bg-gray-800 text-white text-sm px-4 py-2 rounded font-semibold no-underline">
+      👁 Preview do relatório
+    </a>
+    {% endif %}
+    {% if avaliacao.status == 'confirmado' %}
+    <form method="POST" action="/avaliacoes/{{ avaliacao.id }}/publicar" class="inline"
+          onsubmit="return confirm('Publicar este relatório no portal público (farolpublico.com.br)?');">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <button class="bg-amber-500 hover:bg-amber-600 text-white text-sm px-4 py-2 rounded font-semibold">
+        📤 Publicar no portal
+      </button>
+    </form>
     {% endif %}
   </div>
 </div>

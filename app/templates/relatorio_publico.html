@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>{{ avaliacao.cidade }}/{{ avaliacao.uf }} · ITGP {{ avaliacao.ciclo }} · Farol Público</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: #f3f4f6; color: #111827; line-height: 1.5; }
+.container { max-width: 960px; margin: 0 auto; padding: 24px; }
+.card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+h1 { color: #1e3a8a; margin: 0 0 8px; font-size: 32px; }
+h2 { color: #1e3a8a; margin-top: 24px; font-size: 22px; border-bottom: 2px solid #fbbf24; padding-bottom: 6px; }
+h3 { color: #1e3a8a; font-size: 17px; margin: 16px 0 4px; }
+.subtitle { color: #6b7280; font-size: 14px; }
+.banner { background: linear-gradient(135deg, #1e3a8a, #1e40af); color: white; padding: 32px 24px; border-radius: 12px; margin-bottom: 16px; }
+.banner h1 { color: white; }
+.banner .subtitle { color: rgba(255,255,255,0.8); }
+.nota { font-size: 64px; font-weight: 900; line-height: 1; }
+.classif { display: inline-block; padding: 4px 12px; border-radius: 9999px; font-size: 14px; font-weight: 600; margin-left: 12px; vertical-align: middle; }
+.classif.Alta { background: #d1fae5; color: #065f46; }
+.classif.Média, .classif.Media { background: #fef3c7; color: #92400e; }
+.classif.Baixa { background: #fee2e2; color: #991b1b; }
+.classif.Mínima, .classif.Minima { background: #fecaca; color: #7f1d1d; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.stat { background: #f9fafb; padding: 12px; border-radius: 8px; }
+.stat .v { font-size: 22px; font-weight: 700; color: #1e3a8a; }
+.stat .l { font-size: 12px; color: #6b7280; text-transform: uppercase; }
+.dim-bar { background: #e5e7eb; height: 8px; border-radius: 4px; margin-top: 4px; overflow: hidden; }
+.dim-bar > div { background: #1e3a8a; height: 100%; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+table th, table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+table th { background: #f9fafb; font-size: 11px; text-transform: uppercase; color: #6b7280; font-weight: 600; }
+.nota-cell { font-weight: 600; text-align: right; font-family: ui-monospace, monospace; }
+.disclaimers { background: #fef9c3; padding: 16px; border-left: 4px solid #fbbf24; border-radius: 0 8px 8px 0; font-size: 13px; }
+.disclaimers ol { padding-left: 20px; margin: 8px 0; }
+.disclaimers li { margin-bottom: 6px; }
+footer { text-align: center; color: #6b7280; font-size: 12px; padding: 24px 16px; }
+a { color: #1d4ed8; }
+@media print {
+  body { background: white; }
+  .card, .banner { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Banner -->
+  <div class="banner">
+    <h1>{{ avaliacao.cidade }}/{{ avaliacao.uf }}</h1>
+    <p class="subtitle">Avaliação ITGP — Ciclo {{ avaliacao.ciclo }} · Farol Público / Instituto Nossa Ilhéus</p>
+    <div style="margin-top: 16px;">
+      <span class="nota">{{ "%.2f"|format(avaliacao.nota_geral or 0) }}</span>
+      <span style="font-size: 24px;">/100</span>
+      <span class="classif {{ avaliacao.classificacao }}">{{ avaliacao.classificacao }}</span>
+    </div>
+  </div>
+
+  <!-- Stats globais -->
+  <div class="card">
+    <div class="grid">
+      <div class="stat">
+        <div class="v">{{ total }}</div>
+        <div class="l">Indicadores avaliados</div>
+      </div>
+      <div class="stat">
+        <div class="v">{{ confirmados }}</div>
+        <div class="l">Revisados por humano</div>
+      </div>
+      <div class="stat">
+        <div class="v">{{ pdfs }}</div>
+        <div class="l">PDFs analisados</div>
+      </div>
+      <div class="stat">
+        <div class="v">{{ paginas }}</div>
+        <div class="l">Páginas crawleadas</div>
+      </div>
+    </div>
+    <p style="margin-top: 16px; font-size: 13px; color: #6b7280;">
+      Publicado em {{ publicado_em }} · Ciclo de avaliação {{ avaliacao.ciclo }}
+    </p>
+  </div>
+
+  <!-- Por dimensão -->
+  <div class="card">
+    <h2>Notas por dimensão</h2>
+    <table>
+      <thead>
+        <tr><th>Dimensão</th><th>Itens</th><th>Soma ponderada</th><th>%</th></tr>
+      </thead>
+      <tbody>
+      {% for d in dimensoes %}
+        <tr>
+          <td>{{ d.dim_nome }} <small style="color:#6b7280;">({{ d.secao }})</small></td>
+          <td>{{ d.pontuados }}/{{ d.total }}</td>
+          <td>{{ "%.1f"|format(d.soma or 0) }}/{{ d.peso_total }}</td>
+          <td style="width: 200px;">
+            <strong>{{ "%.0f"|format(d.pct or 0) }}%</strong>
+            <div class="dim-bar"><div style="width: {{ d.pct or 0 }}%;"></div></div>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Disclaimers -->
+  <div class="card">
+    <h2>Sobre esta avaliação</h2>
+    <div class="disclaimers">
+      <strong>Informações importantes:</strong>
+      <ol>
+        <li><strong>Origem:</strong> avaliação feita pelo Instituto Nossa Ilhéus, com produção técnica do NIBS — não é avaliação oficial da Transparência Internacional Brasil.</li>
+        <li><strong>Metodologia:</strong> usa o Índice de Transparência e Governança Pública (ITGP), 3ª edição (2025), da Transparência Internacional Brasil, sem alteração nos pesos ou critérios.</li>
+        <li><strong>Apoio de IA:</strong> a primeira pontuação é feita por modelo de linguagem (Anthropic Claude), revisada por avaliador humano antes da publicação.</li>
+        <li><strong>Não-oficial:</strong> os resultados aqui apresentados não foram chancelados pela Transparência Internacional Brasil.</li>
+        <li><strong>Solicitação de correção:</strong> identificou alguma informação desatualizada ou que mereça revisão? Acesse <a href="https://farolpublico.com.br/canal-comunicacao.html">canal de comunicação</a>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Detalhe item-a-item -->
+  {% for d in dimensoes %}
+    <div class="card">
+      <h2>{{ d.dim_nome }} <small style="color:#6b7280;font-weight:normal;font-size:14px;">({{ d.secao }})</small></h2>
+      {% for it in d.itens %}
+      <div style="margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #f3f4f6;">
+        <h3>
+          {{ it.codigo }}
+          <span style="font-weight: normal; font-size: 14px; color: #6b7280;">
+            · peso {{ it.peso }}
+          </span>
+          <span class="nota-cell" style="float: right; color: #1e3a8a;">
+            {{ "%.2f"|format(it.nota or 0) }}/{{ it.nota_max }}
+          </span>
+        </h3>
+        <p style="margin: 6px 0; font-weight: 500;">{{ it.pergunta }}</p>
+        {% if it.justificativa %}
+        <p style="font-size: 14px; color: #4b5563;">{{ it.justificativa }}</p>
+        {% endif %}
+        {% if it.url_evidencia and it.url_evidencia.startswith("http") %}
+        <p style="font-size: 13px;"><strong>Evidência:</strong> <a href="{{ it.url_evidencia }}" target="_blank">{{ it.url_evidencia[:80] }}{% if it.url_evidencia|length > 80 %}…{% endif %}</a></p>
+        {% endif %}
+        {% if it.o_que_falta %}
+        <p style="font-size: 13px; color: #92400e; background: #fef9c3; padding: 6px 10px; border-radius: 4px; margin-top: 6px;">
+          <strong>📌 Recomendação:</strong> {{ it.o_que_falta }}
+        </p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+  <footer>
+    Farol Público · Instituto Nossa Ilhéus · Produção NIBS<br>
+    <a href="https://farolpublico.com.br">farolpublico.com.br</a>
+  </footer>
+
+</div>
+</body>
+</html>
