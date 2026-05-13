@@ -18,7 +18,10 @@ from app.services.prompts import (
     carregar_indicadores, agrupar_por_dimensao,
     gerar_system, gerar_user_message, TOOLS_SCHEMA,
 )
-from app.services.tools import resumir_dossie_magro, executar_tool
+from app.services.tools import resumir_dossie_magro, executar_tool, gravar_avaliacao
+from app.services.triagem import (
+    extrair_keywords, carregar_paginas_normalizadas, paginas_relevantes,
+)
 
 
 MAX_ITER_POR_INDICADOR = 8   # tipicamente 3-4 chamadas (search → read → grava)
@@ -104,22 +107,24 @@ async def avaliar_indicador(
 
 
 async def avaliar_avaliacao(avaliacao_id: int) -> dict:
-    """Avaliação completa: 122 indicadores em ~12 dimensões.
-    Cada indicador é uma conversa independente."""
+    """Avaliação completa com TRIAGEM PRÉVIA.
+    Para cada indicador: se nenhuma página do dossiê tem keywords da pergunta,
+    grava nota 0 SEM chamar IA. Caso contrário, manda só as páginas relevantes."""
     async with AsyncSessionFactory() as session:
         av = await session.get(Avaliacao, avaliacao_id)
         if not av:
             return {"erro": "avaliação não existe"}
 
         cliente = await cliente_da_sessao(session)
-        lista_paginas = await resumir_dossie_magro(session, avaliacao_id)
+        paginas_norm = await carregar_paginas_normalizadas(session, avaliacao_id)
 
         await _set_status(session, avaliacao_id, "avaliando_ia")
-        await _log(session, avaliacao_id, "info",
-                   f"Início avaliação IA · {cliente.modelo} · "
-                   f"dossiê magro com {lista_paginas.count(chr(10))+1} páginas")
+        await _log(
+            session, avaliacao_id, "info",
+            f"Início avaliação · {cliente.modelo} · "
+            f"dossiê com {len(paginas_norm)} páginas (triagem prévia ativa)"
+        )
 
-    # System como list[dict] com cache_control (cache ephemeral, dura 5 min)
     system_blocks = [{
         "type": "text",
         "text": gerar_system(av.cidade, av.uf),
@@ -131,7 +136,7 @@ async def avaliar_avaliacao(avaliacao_id: int) -> dict:
 
     total_gravados = 0
     total_falhas = 0
-    dim_atual = None
+    total_zero_sem_ia = 0
 
     for grupo in grupos:
         async with AsyncSessionFactory() as session:
@@ -139,12 +144,44 @@ async def avaliar_avaliacao(avaliacao_id: int) -> dict:
                 session, avaliacao_id, "info",
                 f"→ Dim **{grupo['secao']}/{grupo['dim_nome']}** ({len(grupo['indicadores'])} ind)"
             )
-        g_grupo, f_grupo = 0, 0
+        g_grupo, f_grupo, z_grupo = 0, 0, 0
+
         for ind in grupo["indicadores"]:
+            keywords = extrair_keywords(ind.get("pergunta", ""))
+            relevantes, score = paginas_relevantes(paginas_norm, keywords, top_n=6, min_score=2)
+
+            # Triagem: se nada do dossiê tem relação, grava 0 sem IA
+            if not relevantes:
+                async with AsyncSessionFactory() as ses:
+                    await gravar_avaliacao(
+                        ses, avaliacao_id,
+                        codigo=ind["codigo"],
+                        nota=0.0,
+                        justificativa=(
+                            f"Triagem automática: nenhuma página do dossiê tem keywords "
+                            f"desse indicador ({', '.join(keywords[:5]) or 'sem keywords extraídas'}). "
+                            f"Indica que a Prefeitura não publica esse tipo de informação."
+                        ),
+                        url_evidencia=av.cidade,  # placeholder; revisor humano pode ajustar
+                        o_que_falta=f"Publicar conteúdo relacionado a: {(ind.get('pergunta') or '').strip()[:200]}",
+                        desconto_motivos=["sem evidência no dossiê (triagem)"],
+                        confianca=0.6,
+                        ia_modelo=f"triagem_sem_ia",
+                    )
+                z_grupo += 1
+                total_zero_sem_ia += 1
+                total_gravados += 1
+                continue
+
+            # Tem páginas relevantes — chama IA com lista SÓ delas
+            lista_relevante = "\n".join(
+                f"- [{p['tipo']}] {p['url']}  ({(p['titulo'] or '')[:80]})"
+                for p in relevantes
+            )
             try:
                 gravou, _ = await avaliar_indicador(
                     cliente, avaliacao_id, av.cidade, av.uf, av.ciclo,
-                    grupo, ind, lista_paginas, system_blocks,
+                    grupo, ind, lista_relevante, system_blocks,
                 )
                 if gravou:
                     g_grupo += 1
@@ -160,24 +197,26 @@ async def avaliar_avaliacao(avaliacao_id: int) -> dict:
                         session, avaliacao_id, "warn",
                         f"falha em {ind['codigo']}: {type(e).__name__}: {str(e)[:200]}"
                     )
+
         async with AsyncSessionFactory() as session:
             await _log(
                 session, avaliacao_id, "info",
-                f"  ✓ {grupo['dim_nome']}: {g_grupo} ✓ / {f_grupo} ✗ · "
-                f"{cliente.resumo_uso()}"
+                f"  ✓ {grupo['dim_nome']}: {g_grupo} via IA + {z_grupo} zeros triagem / "
+                f"{f_grupo} ✗ · {cliente.resumo_uso()}"
             )
 
     async with AsyncSessionFactory() as session:
         await _log(
             session, avaliacao_id, "info",
-            f"Avaliação concluída: {total_gravados}/{total_gravados+total_falhas} pontuados · "
-            f"{cliente.resumo_uso()}"
+            f"Avaliação concluída: {total_gravados}/{total_gravados+total_falhas} pontuados "
+            f"({total_zero_sem_ia} zeros via triagem sem IA) · {cliente.resumo_uso()}"
         )
         await _set_status(session, avaliacao_id, "aguardando_revisao")
 
     return {
         "gravados": total_gravados,
         "falhas": total_falhas,
+        "zeros_triagem": total_zero_sem_ia,
         "chamadas": cliente.total_chamadas,
         "custo_usd": cliente.custo_acumulado_usd(),
     }

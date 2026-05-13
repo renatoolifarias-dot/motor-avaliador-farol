@@ -119,14 +119,13 @@ class ClienteIA:
 
     def custo_acumulado_usd(self) -> float:
         p_in, p_out = PRECOS_USD_POR_MTOK.get(self.modelo, (0.0, 0.0))
-        # Input "normal" = total_in - cache_read - cache_write (esses dois já estão no total_in)
+        # API: input_tokens já EXCLUI cache_read e cache_write — não subtrair de novo
         cache_read = getattr(self, "total_cache_read", 0)
         cache_write = getattr(self, "total_cache_write", 0)
-        normal_in = self.total_in - cache_read - cache_write
         return (
-            (normal_in / 1_000_000) * p_in +
-            (cache_read / 1_000_000) * p_in * 0.10 +     # 90% desconto
-            (cache_write / 1_000_000) * p_in * 1.25 +    # 25% premium (1x só)
+            (self.total_in / 1_000_000) * p_in +
+            (cache_read / 1_000_000) * p_in * 0.10 +
+            (cache_write / 1_000_000) * p_in * 1.25 +
             (self.total_out / 1_000_000) * p_out
         )
 
