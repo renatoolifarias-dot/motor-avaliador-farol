@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 from fastapi import APIRouter, Request, Depends, Form, HTTPException
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -223,3 +223,18 @@ async def preview(
     caminho, slug = await gerar_html(aid)
     html = open(caminho).read()
     return HTMLResponse(html)
+
+
+
+@router.get("/avaliacoes/{aid}/relatorio.pdf")
+async def baixar_pdf(
+    aid: int, user=Depends(exige_login),
+):
+    """Gera e devolve PDF do relatório (via Playwright)."""
+    from app.services.publicador import gerar_pdf
+    pdf_path = await gerar_pdf(aid)
+    return FileResponse(
+        pdf_path,
+        media_type="application/pdf",
+        filename=f"farol-publico-relatorio-{aid}.pdf",
+    )

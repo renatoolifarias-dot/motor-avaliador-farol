@@ -151,3 +151,27 @@ async def publicar_via_ftp(avaliacao_id: int) -> dict:
         "upload": "ok",
         "url_publica": f"https://farolpublico.com.br/{pasta}/{nome_arq}",
     }
+
+
+
+async def gerar_pdf(avaliacao_id: int) -> str:
+    """Gera PDF do relatório usando Playwright (Chromium).
+    Retorna caminho do arquivo PDF gerado."""
+    caminho_html, slug = await gerar_html(avaliacao_id)
+    pdf_path = caminho_html.replace(".html", ".pdf")
+
+    from playwright.async_api import async_playwright
+    async with async_playwright() as pw:
+        browser = await pw.chromium.launch(headless=True)
+        context = await browser.new_context()
+        page = await context.new_page()
+        # Carrega arquivo local
+        await page.goto(f"file://{caminho_html}", wait_until="networkidle", timeout=20000)
+        await page.pdf(
+            path=pdf_path,
+            format="A4",
+            print_background=True,
+            margin={"top": "12mm", "right": "12mm", "bottom": "12mm", "left": "12mm"},
+        )
+        await browser.close()
+    return pdf_path

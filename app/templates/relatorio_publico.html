@@ -41,6 +41,7 @@ a { color: #1d4ed8; }
 @media print {
   body { background: white; }
   .card, .banner { box-shadow: none; break-inside: avoid; }
+  .no-print { display: none !important; }
 }
 </style>
 </head>
@@ -55,6 +56,13 @@ a { color: #1d4ed8; }
       <span class="nota">{{ "%.2f"|format(avaliacao.nota_geral or 0) }}</span>
       <span style="font-size: 24px;">/100</span>
       <span class="classif {{ avaliacao.classificacao }}">{{ avaliacao.classificacao }}</span>
+    </div>
+    <div class="no-print" style="margin-top: 20px;">
+      <a href="/avaliacoes/{{ avaliacao.id }}/relatorio.pdf"
+         style="display:inline-block;background:white;color:#1e3a8a;padding:8px 16px;
+                border-radius:6px;text-decoration:none;font-weight:600;font-size:14px;">
+        📄 Baixar PDF
+      </a>
     </div>
   </div>
 
