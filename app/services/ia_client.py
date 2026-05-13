@@ -73,13 +73,17 @@ class ClienteIA:
     )
     async def chamar(
         self,
-        system: str,
+        system,  # str OU list[dict] com cache_control
         messages: list[dict],
         tools: Optional[list[dict]] = None,
         max_tokens: int = 4096,
         temperature: float = 0.0,
     ) -> Any:
-        """Faz uma chamada à API com Tool Use. Retorna o objeto Message."""
+        """Faz uma chamada à API com Tool Use. Retorna o objeto Message.
+
+        Se `system` for list[dict] com cache_control, ativa prompt caching:
+        90% de desconto nos blocks marcados em todas as chamadas seguintes.
+        """
         kwargs = {
             "model": self.modelo,
             "system": system,
@@ -92,27 +96,47 @@ class ClienteIA:
 
         resp = await self.client.messages.create(**kwargs)
 
-        # accounting
+        # accounting (com cache awareness)
+        u = resp.usage
         self.total_chamadas += 1
-        self.total_in += resp.usage.input_tokens
-        self.total_out += resp.usage.output_tokens
+        self.total_in += u.input_tokens
+        self.total_out += u.output_tokens
+        cache_read = getattr(u, "cache_read_input_tokens", 0) or 0
+        cache_write = getattr(u, "cache_creation_input_tokens", 0) or 0
+        self.total_cache_read = getattr(self, "total_cache_read", 0) + cache_read
+        self.total_cache_write = getattr(self, "total_cache_write", 0) + cache_write
+
         logger.info(
             "ia_chamada",
             modelo=self.modelo,
-            in_tokens=resp.usage.input_tokens,
-            out_tokens=resp.usage.output_tokens,
+            in_tokens=u.input_tokens,
+            out_tokens=u.output_tokens,
+            cache_read=cache_read,
+            cache_write=cache_write,
             stop_reason=resp.stop_reason,
         )
         return resp
 
     def custo_acumulado_usd(self) -> float:
-        return estimar_custo_usd(self.modelo, self.total_in, self.total_out)
+        p_in, p_out = PRECOS_USD_POR_MTOK.get(self.modelo, (0.0, 0.0))
+        # Input "normal" = total_in - cache_read - cache_write (esses dois já estão no total_in)
+        cache_read = getattr(self, "total_cache_read", 0)
+        cache_write = getattr(self, "total_cache_write", 0)
+        normal_in = self.total_in - cache_read - cache_write
+        return (
+            (normal_in / 1_000_000) * p_in +
+            (cache_read / 1_000_000) * p_in * 0.10 +     # 90% desconto
+            (cache_write / 1_000_000) * p_in * 1.25 +    # 25% premium (1x só)
+            (self.total_out / 1_000_000) * p_out
+        )
 
     def resumo_uso(self) -> str:
+        cr = getattr(self, "total_cache_read", 0)
+        cw = getattr(self, "total_cache_write", 0)
         return (
-            f"{self.total_chamadas} chamada(s) ao {self.modelo} · "
-            f"{self.total_in:,} tokens entrada + {self.total_out:,} saída · "
-            f"~US$ {self.custo_acumulado_usd():.4f}"
+            f"{self.total_chamadas}× {self.modelo} · "
+            f"in={self.total_in:,} (cache: {cr:,} read, {cw:,} write) · "
+            f"out={self.total_out:,} · ~US$ {self.custo_acumulado_usd():.4f}"
         )
 
 

@@ -1,36 +1,27 @@
-"""Orquestrador de avaliação por IA.
+"""Orquestrador de avaliação por IA — versão otimizada.
 
-Para cada dimensão (12 grupos = 6 Geral + 4 Saúde + 2 Clima),
-roda um loop de Tool Use com Claude:
+Otimizações sobre a versão anterior:
+- 1 conversa POR INDICADOR (não por dimensão) → histórico não acumula
+- Prompt caching (system + dossiê magro) → 90% desconto nos turns subsequentes
+- Dossiê magro: só URLs+títulos no prompt; IA usa tools pra ler conteúdo
 
-  enquanto não terminou (stop_reason != "end_turn"):
-    response = claude.chamar(messages, tools=TOOLS)
-    se vier tool_use:
-        executa a tool no DB
-        appenda tool_result na conversa
-        continua
-    senão break
-
-Limites de segurança:
-- max_iteracoes por dimensão: 60 (média ~3 tool_calls por indicador × 11 ind)
-- max_tokens por chamada: 4096
-- timeout total por avaliação: deve ser configurado pelo caller (BackgroundTask sem timeout)
+Custo estimado por cidade: ~US$ 0.20-0.40 (vs US$ 6+ na versão antiga).
 """
 from __future__ import annotations
 from datetime import datetime
-from sqlalchemy import select
+from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import AsyncSessionFactory
-from app.models import Avaliacao, AvaliacaoLog
+from app.models import Avaliacao, AvaliacaoLog, AvaliacaoItem
 from app.services.ia_client import cliente_da_sessao, ClienteIA
 from app.services.prompts import (
     carregar_indicadores, agrupar_por_dimensao,
     gerar_system, gerar_user_message, TOOLS_SCHEMA,
 )
-from app.services.tools import resumir_dossie, executar_tool
+from app.services.tools import resumir_dossie_magro, executar_tool
 
 
-MAX_ITER_POR_DIMENSAO = 60
+MAX_ITER_POR_INDICADOR = 8   # tipicamente 3-4 chamadas (search → read → grava)
 
 
 async def _log(session: AsyncSession, aid: int, nivel: str, msg: str) -> None:
@@ -47,42 +38,40 @@ async def _set_status(session: AsyncSession, aid: int, status: str) -> None:
 
 
 def _to_dict(block) -> dict:
-    """Converte block do SDK Anthropic em dict serializável (pra messages)."""
     if hasattr(block, "model_dump"):
         return block.model_dump()
     return dict(block)
 
 
-async def avaliar_dimensao(
+async def avaliar_indicador(
     cliente: ClienteIA,
     avaliacao_id: int,
-    cidade: str,
-    uf: str,
-    ciclo: int,
-    grupo: dict,
-    resumo_dossie: str,
-) -> tuple[int, int]:
-    """Roda Tool Use loop para 1 dimensão. Retorna (gravados, falhas)."""
-    system = gerar_system(cidade, uf)
-    user_msg = gerar_user_message(cidade, uf, ciclo, grupo, resumo_dossie)
+    cidade: str, uf: str, ciclo: int,
+    grupo: dict, ind: dict,
+    lista_paginas_magra: str,
+    system_blocks: list,
+) -> tuple[bool, int]:
+    """Loop Tool Use para 1 indicador. Retorna (gravou?, num_chamadas)."""
+    user_msg = gerar_user_message(cidade, uf, ciclo, grupo, ind, lista_paginas_magra)
     messages: list[dict] = [{"role": "user", "content": user_msg}]
 
-    gravados, falhas = 0, 0
+    gravou = False
+    n_chamadas_inicio = cliente.total_chamadas
 
-    for it in range(MAX_ITER_POR_DIMENSAO):
+    for it in range(MAX_ITER_POR_INDICADOR):
         resp = await cliente.chamar(
-            system=system, messages=messages, tools=TOOLS_SCHEMA, max_tokens=4096
+            system=system_blocks,            # list com cache_control
+            messages=messages,
+            tools=TOOLS_SCHEMA,
+            max_tokens=2048,
         )
 
-        # Se ele só respondeu texto sem tool_use → fim do trabalho
         tool_uses = [b for b in resp.content if b.type == "tool_use"]
         if not tool_uses:
             break
 
-        # Adiciona assistant message (com tool_use blocks) à conversa
         messages.append({"role": "assistant", "content": [_to_dict(b) for b in resp.content]})
 
-        # Executa todos os tool_uses (paralelo seria possível mas sequencial é mais simples)
         results = []
         async with AsyncSessionFactory() as ses:
             for tu in tool_uses:
@@ -90,18 +79,14 @@ async def avaliar_dimensao(
                     out = await executar_tool(
                         ses, avaliacao_id, tu.name, tu.input, ia_modelo=cliente.modelo
                     )
-                    if tu.name == "gravar_avaliacao":
-                        if out.get("ok"):
-                            gravados += 1
-                        else:
-                            falhas += 1
+                    if tu.name == "gravar_avaliacao" and out.get("ok"):
+                        gravou = True
                     results.append({
                         "type": "tool_result",
                         "tool_use_id": tu.id,
-                        "content": str(out)[:4000],
+                        "content": str(out)[:3000],
                     })
                 except Exception as e:
-                    falhas += 1
                     results.append({
                         "type": "tool_result",
                         "tool_use_id": tu.id,
@@ -111,64 +96,82 @@ async def avaliar_dimensao(
 
         messages.append({"role": "user", "content": results})
 
-        if resp.stop_reason == "end_turn":
+        # Se já gravou e a IA não está pedindo mais nada, sai
+        if gravou and resp.stop_reason == "end_turn":
             break
 
-    return gravados, falhas
+    return gravou, cliente.total_chamadas - n_chamadas_inicio
 
 
 async def avaliar_avaliacao(avaliacao_id: int) -> dict:
-    """Avaliação completa: percorre as 12 dimensões."""
+    """Avaliação completa: 122 indicadores em ~12 dimensões.
+    Cada indicador é uma conversa independente."""
     async with AsyncSessionFactory() as session:
         av = await session.get(Avaliacao, avaliacao_id)
         if not av:
             return {"erro": "avaliação não existe"}
 
         cliente = await cliente_da_sessao(session)
-        resumo_dossie = await resumir_dossie(session, avaliacao_id)
+        lista_paginas = await resumir_dossie_magro(session, avaliacao_id)
 
         await _set_status(session, avaliacao_id, "avaliando_ia")
         await _log(session, avaliacao_id, "info",
-                   f"Início avaliação IA · modelo {cliente.modelo}")
+                   f"Início avaliação IA · {cliente.modelo} · "
+                   f"dossiê magro com {lista_paginas.count(chr(10))+1} páginas")
+
+    # System como list[dict] com cache_control (cache ephemeral, dura 5 min)
+    system_blocks = [{
+        "type": "text",
+        "text": gerar_system(av.cidade, av.uf),
+        "cache_control": {"type": "ephemeral"},
+    }]
 
     indicadores = carregar_indicadores()
     grupos = agrupar_por_dimensao(indicadores)
 
     total_gravados = 0
     total_falhas = 0
+    dim_atual = None
 
     for grupo in grupos:
         async with AsyncSessionFactory() as session:
             await _log(
                 session, avaliacao_id, "info",
-                f"→ Dimensão **{grupo['secao']}/{grupo['dim_nome']}** ({len(grupo['indicadores'])} ind)"
+                f"→ Dim **{grupo['secao']}/{grupo['dim_nome']}** ({len(grupo['indicadores'])} ind)"
             )
-
-        try:
-            g, f = await avaliar_dimensao(
-                cliente, avaliacao_id, av.cidade, av.uf, av.ciclo,
-                grupo, resumo_dossie,
+        g_grupo, f_grupo = 0, 0
+        for ind in grupo["indicadores"]:
+            try:
+                gravou, _ = await avaliar_indicador(
+                    cliente, avaliacao_id, av.cidade, av.uf, av.ciclo,
+                    grupo, ind, lista_paginas, system_blocks,
+                )
+                if gravou:
+                    g_grupo += 1
+                    total_gravados += 1
+                else:
+                    f_grupo += 1
+                    total_falhas += 1
+            except Exception as e:
+                f_grupo += 1
+                total_falhas += 1
+                async with AsyncSessionFactory() as session:
+                    await _log(
+                        session, avaliacao_id, "warn",
+                        f"falha em {ind['codigo']}: {type(e).__name__}: {str(e)[:200]}"
+                    )
+        async with AsyncSessionFactory() as session:
+            await _log(
+                session, avaliacao_id, "info",
+                f"  ✓ {grupo['dim_nome']}: {g_grupo} ✓ / {f_grupo} ✗ · "
+                f"{cliente.resumo_uso()}"
             )
-            total_gravados += g
-            total_falhas += f
-            async with AsyncSessionFactory() as session:
-                await _log(
-                    session, avaliacao_id, "info",
-                    f"  ✓ {grupo['dim_nome']}: {g} gravados / {f} falhas · "
-                    f"acumulado uso: {cliente.resumo_uso()}"
-                )
-        except Exception as e:
-            async with AsyncSessionFactory() as session:
-                await _log(
-                    session, avaliacao_id, "error",
-                    f"  ✗ erro em {grupo['dim_nome']}: {type(e).__name__}: {str(e)[:300]}"
-                )
 
     async with AsyncSessionFactory() as session:
         await _log(
             session, avaliacao_id, "info",
-            f"Avaliação IA concluída: {total_gravados} indicadores pontuados · "
-            f"custo total: {cliente.resumo_uso()}"
+            f"Avaliação concluída: {total_gravados}/{total_gravados+total_falhas} pontuados · "
+            f"{cliente.resumo_uso()}"
         )
         await _set_status(session, avaliacao_id, "aguardando_revisao")
 

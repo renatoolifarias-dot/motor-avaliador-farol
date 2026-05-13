@@ -58,18 +58,19 @@ Trabalhe em português brasileiro. Seja honesto sobre limitações do dossiê.
 """
 
 
-CONTEXTO_DIMENSAO = """\
-CIDADE: {cidade}/{uf}  ·  CICLO: {ciclo}  ·  SEÇÃO: {secao}  ·  DIMENSÃO: {dimensao}
+CONTEXTO_INDICADOR = """\
+CIDADE: {cidade}/{uf} · CICLO: {ciclo} · SEÇÃO: {secao} · DIMENSÃO: {dimensao}
 
-DOSSIÊ DISPONÍVEL (resumo das {n_paginas} páginas crawleadas):
-{resumo_dossie}
+DOSSIÊ (use buscar_no_dossie/ler_pagina para acessar):
+{lista_paginas}
 
-INDICADORES DESTA DIMENSÃO ({n_ind} indicadores, peso total {peso_total}):
+AVALIE ESTE INDICADOR:
 
-{lista_indicadores}
+**{codigo}** (peso {peso}, max {nota_max}): {pergunta}
 
-Para CADA indicador acima, faça o ciclo: buscar → ler → gravar. Você TEM que chamar \
-`gravar_avaliacao` exatamente {n_ind} vezes (uma por código).
+Opções: {opcoes}
+
+Estratégia (~3-4 chamadas): buscar termos-chave → ler 1-2 páginas promissoras → gravar_avaliacao com nota, justificativa, url_evidencia específica e o_que_falta.
 """
 
 
@@ -187,18 +188,22 @@ def gerar_user_message(
     uf: str,
     ciclo: int,
     grupo: dict,
-    resumo_dossie: str,
+    ind: dict,
+    lista_paginas: str,
 ) -> str:
-    """User message contendo contexto da dimensão e indicadores."""
-    return CONTEXTO_DIMENSAO.format(
-        cidade=cidade,
-        uf=uf,
-        ciclo=ciclo,
-        secao=grupo["secao"],
-        dimensao=grupo["dim_nome"],
-        n_paginas=resumo_dossie.count("\n- "),
-        resumo_dossie=resumo_dossie,
-        n_ind=len(grupo["indicadores"]),
-        peso_total=sum(i["peso"] for i in grupo["indicadores"]),
-        lista_indicadores=formatar_lista_indicadores(grupo["indicadores"]),
+    """User message para UM indicador específico (não dimensão inteira).
+    Reduz drasticamente o uso de tokens: cada indicador é uma conversa
+    independente, sem acumular histórico de outros indicadores."""
+    opcs = "; ".join(
+        f"{o['nota']}={o['descricao']}" for o in ind.get("opcoes_resposta", [])
+    )
+    return CONTEXTO_INDICADOR.format(
+        cidade=cidade, uf=uf, ciclo=ciclo,
+        secao=grupo["secao"], dimensao=grupo["dim_nome"],
+        lista_paginas=lista_paginas,
+        codigo=ind["codigo"],
+        peso=ind["peso"],
+        nota_max=ind["nota_max"],
+        pergunta=(ind.get("pergunta") or "").strip()[:400],
+        opcoes=opcs,
     )

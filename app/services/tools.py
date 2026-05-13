@@ -189,3 +189,18 @@ async def executar_tool(
             ia_modelo=ia_modelo,
         )
     return {"erro": f"tool desconhecida: {nome}"}
+
+
+async def resumir_dossie_magro(session: AsyncSession, avaliacao_id: int) -> str:
+    """Versão enxuta: só URLs e títulos, sem texto.
+    Reduz baseline de ~6k pra ~1k tokens. A IA usa as tools pra olhar o conteúdo."""
+    paginas = (await session.scalars(
+        select(AvaliacaoPagina)
+        .where(AvaliacaoPagina.avaliacao_id == avaliacao_id, AvaliacaoPagina.profundidade >= 0)
+        .order_by(AvaliacaoPagina.profundidade, AvaliacaoPagina.id)
+    )).all()
+    linhas = []
+    for p in paginas:
+        titulo = (p.titulo or "").strip()[:80]
+        linhas.append(f"- [{p.tipo}] {p.url_final}  ({titulo})")
+    return "\n".join(linhas) if linhas else "(dossiê vazio)"
