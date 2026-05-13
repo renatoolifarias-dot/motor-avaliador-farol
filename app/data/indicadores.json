@@ -1,10 +1,9 @@
 {
   "meta": {
-    "source": "Nota Metodologica ITGP - Executivo Municipal - 3a edicao - 2025",
-    "editor": "Transparencia Internacional Brasil",
-    "extraido_em": "2026-05-11",
+    "source": "nota-metodologica-itgp-3ed.pdf",
+    "extraido_em": "2026-05-13",
     "total_indicadores": 122,
-    "observacao": "Parser v6 - splitting por colunas. Perguntas remontadas. Algumas rubricas (0,25/0,5/0,75) podem nao ter sido capturadas. | 2026-05-12: adicionados C-TG09 e C-TG10 que tinham erro tipográfico no PDF (TG9 e TG010)."
+    "observacao": "Re-extração v2 — sem truncamento, com descrições limpas"
   },
   "indicadores": [
     {
@@ -12,16 +11,16 @@
       "secao": "Geral",
       "dim_key": "legal",
       "dim_nome": "Legal",
-      "pergunta": "Possui norma de regulamentação da \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui norma de regulamentação da Lei n° 12.527/2011, a Lei de Acesso à Informação (LAI)?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -31,17 +30,21 @@
       "secao": "Geral",
       "dim_key": "legal",
       "dim_nome": "Legal",
-      "pergunta": "Possui norma sobre dados abertos ou Plano de \u0007",
+      "pergunta": "Possui norma sobre dados abertos ou Plano de Dados Abertos – PDA (em vigência)?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, possui norma ou PDA"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, possui norma e PDA"
         }
       ]
     },
@@ -50,16 +53,16 @@
       "secao": "Geral",
       "dim_key": "legal",
       "dim_nome": "Legal",
-      "pergunta": "Possui regulamentação de conflitos de interesses? \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui regulamentação de conflitos de interesses?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -69,16 +72,16 @@
       "secao": "Geral",
       "dim_key": "legal",
       "dim_nome": "Legal",
-      "pergunta": "Possui norma de proteção ao denunciante? \u0007",
+      "pergunta": "Possui norma de proteção ao denunciante?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -88,16 +91,16 @@
       "secao": "Geral",
       "dim_key": "legal",
       "dim_nome": "Legal",
-      "pergunta": "Possui norma de regulamentação da Lei \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui norma de regulamentação da Lei n° 13.709/2018, a Lei Geral de Proteção de Dados Pessoais (LGPD), e concluiu o processo de adequação, com definição de encarregado de dados, informações de contato e divulgação das instâncias de governança?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -107,16 +110,16 @@
       "secao": "Geral",
       "dim_key": "legal",
       "dim_nome": "Legal",
-      "pergunta": "Possui regulamentação municipal da Lei \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui regulamentação municipal da Lei Anticorrupção (Lei Federal n°12.846/2013)?",
+      "peso": 5,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -126,16 +129,16 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Possui Portal da Transparência, divulgado com destaque a partir do portal principal do governo municipal? O Portal da Transparência deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner, de forma acessível e visível. O portal deve estar ativo e atualizado com, no mínimo, informações do último mês. Recomenda-se que esteja explícito a data da última atualização do portal.",
+      "pergunta": "Possui Portal da Transparência, divulgado com destaque a partir do portal principal do governo municipal?",
       "peso": 2,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -145,16 +148,16 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Possui Portal de Dados Abertos, divulgado com destaque a partir do portal principal do governo municipal? O Portal de Dados Abertos deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner disponível na página inicial do site da prefeitura, de forma acessível e visível. O portal deve estar ativo e atualizado com, no mínimo, informações do último mês. Recomenda-se que esteja explícito a data da última atualização do portal.",
+      "pergunta": "Possui Portal de Dados Abertos, divulgado com destaque a partir do portal principal do governo municipal?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -164,16 +167,16 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Possui canal de acesso à informação, divulgado com destaque a partir do site principal do governo municipal? O canal de acesso à informação (como e-SIC) deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner disponível na página inicial do site da prefeitura, de forma acessível e visível. Deve estar ativo permitindo o PLATAFORMAS registro de solicitações de acesso à informação.",
+      "pergunta": "Possui canal de acesso à informação, divulgado com destaque a partir do site principal do governo municipal?",
       "peso": 2,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -183,16 +186,16 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Possui canal de ouvidoria, divulgado com destaque a partir do site principal do governo municipal? O canal de Ouvidoria deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner disponível na página inicial do site da prefeitura, de forma acessível e visível, além de estar ativo permitindo o registro de manifestação de ouvidoria. Deve-se explicitar que se trata de canal de Ouvidoria. Contatos genéricos dos municípios, que não indiquem explicitamente que são formas de registro de manifestações à Ouvidorias não serão considerados.",
+      "pergunta": "Possui canal de ouvidoria, divulgado com destaque a partir do site principal do governo municipal?",
       "peso": 2,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -202,12 +205,12 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Possui canal para a realização de denúncias de corrupção anônimas, divulgado com destaque a partir do \u0007 site principal do governo municipal? O canal de denúncias de corrupção deve ser divulgado com destaque no portal principal da Prefeitura, ou seja, com link, seção ou banner disponível na página inicial \u0007 do portal da prefeitura, de forma acessível e visível, além de estar ativo permitindo o registro de denúncias de casos de corrupção, com possibilidade de anonimato. Pode ser considerado, aqui, o registro de denúncias por outros canais, como a Ouvidoria, caso esteja indicado, explicitamente, que esse canal também recebe denúncias relacionadas à corrupção, com a possibilidade de registro anônimo. Vale reforçar que é importante que o tema/assunto “corrupção” esteja evidente no canal de registro de denúncias para considerar este indicador atendido.",
+      "pergunta": "Possui canal para a realização de denúncias de corrupção anônimas, divulgado com destaque a partir do site principal do governo municipal?",
       "peso": 2,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
@@ -215,8 +218,8 @@
           "descricao": "Sim, apenas um canal geral para"
         },
         {
-          "nota": 1,
-          "descricao": "Sim, com um canal/campo específico"
+          "nota": 1.0,
+          "descricao": "Sim, com um canal/campo específico para denúncias de corrupção anônimas"
         }
       ]
     },
@@ -225,17 +228,21 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Possui Diário Oficial em plataforma online, \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui Diário Oficial em plataforma online, divulgado com destaque a partir do site principal do governo?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, mas não em formato aberto"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e disponibiliza o Diário Oficial em"
         }
       ]
     },
@@ -244,17 +251,29 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Possui serviço eletrônico de pedidos de acesso à \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui serviço eletrônico de pedidos de acesso à informação que: • (i) permita acompanhar a tramitação do pedido, • (ii) forneça número de protocolo, • (iii) permita interposição de recursos e • (iv) resguarde/proteja a identidade do requerente?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -263,17 +282,21 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Publica relatórios estatísticos de acesso à \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica relatórios estatísticos de acesso à informação (E-sic ou outros) atualizados, com periodicidade mínima trimestral?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
-          "descricao": "Não"
+          "nota": 0.0,
+          "descricao": "Não existe"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Existente e desatualizado"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Existente e atualizado"
         }
       ]
     },
@@ -282,17 +305,17 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Publica relatórios estatísticos de ouvidoria, com \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica relatórios estatísticos de ouvidoria, com periodicidade mínima trimestral?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
-          "descricao": "Não"
+          "nota": 0.0,
+          "descricao": "Não existe"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 1.0,
+          "descricao": "Existente e atualizado"
         }
       ]
     },
@@ -301,17 +324,29 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Disponibiliza, em seu portal principal, \u0007",
+      "pergunta": "Disponibiliza, em seu portal principal, ferramentas de acessibilidade com: • i) símbolo/atalho de acessibilidade em destaque; • ii) Legenda, intérprete da Libras e/ou audiodescrição; • iii) possibilidade de alteração de tamanhos e contrastes; • iv) informação explícita da compatibilidade do sit",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -320,16 +355,16 @@
       "secao": "Geral",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas",
-      "pergunta": "Promove visualizações dos dados (painéis, \u0007",
+      "pergunta": "Promove visualizações dos dados (painéis, dashboards, gráficos, infográficos), nos portais da transparência e/ou de dados abertos?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -339,17 +374,21 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "O governo divulga informações sobre sua \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O governo divulga informações sobre sua estrutura, como: • (i) organograma, • (ii) funções • (iii) contatos?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre todos os requisitos"
         }
       ]
     },
@@ -358,17 +397,21 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "Divulga agenda da/o chefe do executivo, com \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga agenda da/o chefe do executivo, com periodicidade diária?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, mas a posteriori"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, de forma antecipada"
         }
       ]
     },
@@ -377,16 +420,16 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "Possui órgão de controle interno criado por norma, \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui órgão de controle interno criado por norma, com atribuições de transparência, controle interno, auditoria, correição, ouvidoria, prevenção e combate à corrupção?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -396,17 +439,21 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "O órgão de controle interno está no primeiro/ \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O órgão de controle interno está no primeiro/ segundo escalão de governo?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
-          "descricao": "Não"
+          "nota": 0.0,
+          "descricao": "Não, está abaixo do segundo escalão"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, está no segundo escalão"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, está no primeiro escalão"
         }
       ]
     },
@@ -415,16 +462,16 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "O órgão de controle interno possui servidores \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O órgão de controle interno possui servidores efetivos?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -434,16 +481,16 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "O órgão de controle interno realiza planejamento \u0007",
+      "pergunta": "O órgão de controle interno realiza planejamento anual de auditorias?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -453,17 +500,21 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "O órgão de controle interno publica pareceres e/ \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O órgão de controle interno publica pareceres e/ ou relatórios de auditoria interna com periodicidade ao menos anual?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, mas está desatualizado"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e está atualizado"
         }
       ]
     },
@@ -472,16 +523,16 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "O governo publica pareceres e/ou relatórios dos \u0007",
+      "pergunta": "O governo publica pareceres e/ou relatórios dos órgãos de controle externo, como Tribunal de Contas e Ministério Público, com periodicidade ao menos anual?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -491,16 +542,16 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "Divulga anualmente informações sobre o \u0007",
+      "pergunta": "Divulga anualmente informações sobre o cumprimento das metas previstas no Plano Plurianual (PPA)?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -510,17 +561,17 @@
       "secao": "Geral",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração Geral e Governança",
-      "pergunta": "Divulga em seu portal principal o Código de Ética \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga em seu portal principal o Código de Ética ou de Conduta dos servidores públicos?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 1.0,
+          "descricao": "Sim2OBRAS PÚBLICAS"
         }
       ]
     },
@@ -529,17 +580,21 @@
       "secao": "Geral",
       "dim_key": "obras_publicas",
       "dim_nome": "Obras Públicas",
-      "pergunta": "Possui plataforma para acompanhamento de \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui plataforma para acompanhamento de obras públicas, incluindo: • (i) execução orçamentária (valores empenhados, pagos e liquidados), • (ii) valores pagos em cada medição e valores que ainda serão medidos, e • (iii) relatório de medição?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, cumpre os 3 requisitos"
         }
       ]
     },
@@ -548,17 +603,29 @@
       "secao": "Geral",
       "dim_key": "obras_publicas",
       "dim_nome": "Obras Públicas",
-      "pergunta": "Possui uma plataforma para acompanhamento \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui uma plataforma para acompanhamento de obras públicas, incluindo: • (i) localização da obra, • (ii) imagens, • (iii) nome dos representantes e formas de contato, • (iv) data de início e fim da obra, • (v) etapas atrasadas, tempo de atraso e eventual indicação de paralisação da obra, • (",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 2 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 6 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 7 requisitos2Dimensões  Indicador                                                            Pontuação                                              Peso"
         }
       ]
     },
@@ -567,16 +634,16 @@
       "secao": "Geral",
       "dim_key": "obras_publicas",
       "dim_nome": "Obras Públicas",
-      "pergunta": "Publica o Plano de Contratações Anual de todos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica o Plano de Contratações Anual de todos os órgãos municipais de forma centralizada, incluindo os órgãos responsáveis por contratações de obras públicas?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -586,17 +653,21 @@
       "secao": "Geral",
       "dim_key": "obras_publicas",
       "dim_nome": "Obras Públicas",
-      "pergunta": "Publica informações sobre os fiscais dos \u0007",
+      "pergunta": "Publica informações sobre os fiscais dos contratos, incluindo: • (i) nome e • (ii) número do registro funcional e/ou CPF?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre ao menos 1 dos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, cumpre os 2 requisitos"
         }
       ]
     },
@@ -605,17 +676,17 @@
       "secao": "Geral",
       "dim_key": "obras_publicas",
       "dim_nome": "Obras Públicas",
-      "pergunta": "Publica os estudos e respectivos relatórios \u0007",
+      "pergunta": "Publica os estudos e respectivos relatórios que descrevem os impactos esperados pelas obras públicas contratadas pelo ente avaliado como o Estudo de Impacto Ambiental (EIA) e Relatório de Impacto Ambiental (RIMA) e/ou o Estudo de Impacto de Vizinhança (EIV)?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 1.0,
+          "descricao": "Sim se tiver um dos relatórios"
         }
       ]
     },
@@ -624,17 +695,29 @@
       "secao": "Geral",
       "dim_key": "obras_publicas",
       "dim_nome": "Obras Públicas",
-      "pergunta": "Publica informações sobre as licenças \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica informações sobre as licenças ambientais emitidas pelo município, incluindo: • (i) íntegra da licença emitida, • (ii) número da licença, • (iii) nome do órgão licenciador, • (iv) atividade licenciada, • (v) tipo da licença, • (vi) data de emissão, • (vii) validade e • (viii) status (vigente, renovada, encerrada)?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 2 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 7 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 8 requisitos"
         }
       ]
     },
@@ -643,17 +726,21 @@
       "secao": "Geral",
       "dim_key": "obras_publicas",
       "dim_nome": "Obras Públicas",
-      "pergunta": "Publica informações sobre a realização de \u0007",
+      "pergunta": "Publica informações sobre a realização de audiências ou consultas públicas para discussão de edital de licitação de contratação de obras públicas municipais, incluindo: • (i) chamamento, • (ii) documentos base para discussão do edital e • (iii) colaborações recebidas?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre ao menos 2 dos requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, cumpre os 3 requisitos"
         }
       ]
     },
@@ -662,17 +749,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados com os salários nominais de servidores efetivos e comissionados, com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -681,17 +780,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados Abertos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados com as verbas indenizatórias nominais (diárias, auxílios, viagens e outros valores que não compõem o salário) dos servidores efetivos e comissionados, com: • (i) acesso aos dados de forma gratuita, acessív",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -700,17 +811,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica anualmente, no Portal de Dados Abertos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre vantagens e benefícios recebidos por servidores públicos e custeados por terceiros (por exemplo, viagens e diárias pagas por empresas), com: • (i) acesso aos dados de forma gratuita, acessível e com",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -719,17 +842,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica anualmente, no Portal de Dados Abertos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre doações recebidas pelo ente, com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml, .txt entre outros) •",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -738,17 +873,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre receitas públicas, com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml, .txt entre outros); • (iii) p",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -757,17 +904,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, em relação às receitas públicas, lançamentos e recebimentos de receita de cada unidade gestora, inclusive recursos extraordinários, com: • (i) Acesso aos dados de forma gratuita, acessível e com licença aberta • (ii) d",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -776,17 +935,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados Abertos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre despesas públicas, com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml, .txt entre outros); • (iii) p",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -795,17 +966,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Com relação às despesas, divulga: \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Com relação às despesas, divulga: • (I) detalhamento das despesas por unidade gestora; • (ii) categoria econômica; • (iii) grupo de despesa; • (iv) função; • (v)subfunção; • (vi) nota de empenho/pagamento. Este indicador avalia a disponibilidade de informações e detalhamentos da temática aval",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 5 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 6 requisitos"
         }
       ]
     },
@@ -814,17 +997,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica anualmente, no Portal de Dados \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre incentivos fiscais, com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml, .txt entre outros); • (iii) p",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -833,17 +1028,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados Abertos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre transferências intergovernamentais obrigatórias (por exemplo, repasse de impostos), com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -852,17 +1059,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre transferências intergovernamentais voluntárias (convênios, acordos de cooperação), com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -871,17 +1090,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência e/ou Portal de Compras, bases de dados sobre licitações, com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml, .txt entre ou",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -890,17 +1121,21 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga, em relação às licitações, as seguintes \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga, em relação às licitações, as seguintes informações: • (i) número da licitação, • (ii) modalidade, • (iii) situação, • (iv) valor, (v) órgão, • (vi) tipo, (vii) objeto, • (viii) edital, • (ix) empresas participantes, • (x) empresa selecionada (nome e CNPJ), • (xi) total proposto,",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 6 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre até 12 requisitos"
         }
       ]
     },
@@ -909,17 +1144,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados Abertos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre contratos públicos (inclusive aditivos), com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml, .txt ent",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -928,17 +1175,21 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga, em relação aos contratos públicos e \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga, em relação aos contratos públicos e aditivos, as seguintes informações: • (i) número do processo, • (ii) objeto, • (iii) tipo de contratação, • (iv) nome, (v) CPF/CNPJ, • (vi) órgão contratante, • (vii) vigência, • (viii) valor total, • (ix) valores parciais, • (x) íntegra dos doc",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 5 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre até os 10 requisitos"
         }
       ]
     },
@@ -947,17 +1198,21 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica mensalmente, no Portal de Dados \u0007",
+      "pergunta": "Publica mensalmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre contratos públicos emergenciais, com: • (i) Acesso aos dados de forma gratuita, acessível e com licença aberta • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml .txt, entre outros)",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre até os 4 requisitos"
         }
       ]
     },
@@ -966,17 +1221,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Sobre a base de dados sobre contratos públicos \u0007",
+      "pergunta": "Sobre a base de dados sobre contratos públicos emergenciais, divulga as seguintes informações: • (i) data de celebração do contrato, • (ii) órgão contratante, • (iii) quantidade, • (iv) descrição, • (v) local de execução, • (vi) valor. Este indicador avalia a disponibilidade de informações e",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 5 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 6 requisitos"
         }
       ]
     },
@@ -985,17 +1252,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga, em relação às parcerias celebradas sob a \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga, em relação às parcerias celebradas sob a Lei n° 13.019/2014 (MROSC), as seguintes informações: • (i) edital, • (ii) termos celebrados, • (iii) plano de trabalho, • (iv) data de assinatura, • (v) identificação do instrumento, • (vi) órgão da administração pública responsável, • (vii) no",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 3 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 6 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 9 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 11 requisitos"
         }
       ]
     },
@@ -1004,17 +1283,21 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica anualmente, no Portal de Dados Abertos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre patrimônio público (bens imóveis), com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml, .txt entre outr",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre até os 4 requisitos"
         }
       ]
     },
@@ -1023,17 +1306,21 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Publica anualmente, no Portal de Dados Abertos \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica anualmente, no Portal de Dados Abertos ou no Portal da Transparência, bases de dados sobre emendas parlamentares ao orçamento municipal, com: • (i) acesso aos dados de forma gratuita, acessível e com licença aberta; • (ii) dados legíveis por máquina (formatos como .csv, .json, .xml, .txt",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre até os 4 requisitos"
         }
       ]
     },
@@ -1042,17 +1329,21 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga, em relação aos repasses de emendas \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga, em relação aos repasses de emendas parlamentares ao orçamento municipal, as seguintes informações: • (i) valor, • (ii) nome do parlamentar, • (iii) órgão de destino, • (iv) data de liberação, • (v) objeto, • (vi) beneficiário, • (vii) estágio do processo (empenhado, liquidado, pago)",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 4 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre até os 8 requisitos"
         }
       ]
     },
@@ -1061,17 +1352,21 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga base dados dos valores recebidos via \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga base dados dos valores recebidos via emendas (estaduais e/ou federais) com subdivisão: • (i) tipo de emenda (individual, bancada estadual, comissão); • (ii) número da emenda; • (iii) data de recebimento; • (iv) nome do parlamentar autor da emenda; • (v) área temática/esfera de aplicaç",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 5 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre até os 10 requisitos"
         }
       ]
     },
@@ -1080,17 +1375,29 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga base de dados com os valores \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga base de dados com os valores recebidos por transferências especiais (estaduais e/ou federais) com subdivisão: • (i) valor; • (ii) número da emenda; • (iii) data de recebimento; • (iv) nome do parlamentar autor da emenda; • (v) área temática/esfera de aplicação do recurso; • (vi) órgão",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 6 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 7 requisitos"
         }
       ]
     },
@@ -1099,17 +1406,21 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Utiliza um portal, seção e/ou sistema de \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Utiliza um portal, seção e/ou sistema de compras públicas eletrônicas, com: • (i) sistema de registro de preço, • (ii) sistema de cadastro dos fornecedores, • (iii) lista de fornecedores penalizados e motivo para tal, • (iv) manuais explicativos sobre compras públicas com linguagem cidadã. Busc",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, cumpre até 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre até os 4 requisitos"
         }
       ]
     },
@@ -1118,16 +1429,16 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga relatório resumido de execução \u0007",
+      "pergunta": "Divulga relatório resumido de execução orçamentária, com periodicidade bimestral?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1137,16 +1448,16 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga relatório de gestão fiscal, com \u0007",
+      "pergunta": "Divulga relatório de gestão fiscal, com periodicidade semestral?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1156,16 +1467,16 @@
       "secao": "Geral",
       "dim_key": "transp_financeira",
       "dim_nome": "Transparência Financeira e Orçamentária",
-      "pergunta": "Divulga relatórios da dívida pública, com \u0007",
+      "pergunta": "Divulga relatórios da dívida pública, com periodicidade anual?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1175,17 +1486,29 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Possui página ou portal com informações \u0007",
+      "pergunta": "Possui página ou portal com informações sobre todos os conselhos de políticas públicas ativos, incluindo: • (i) legislação de criação, • (ii) lista de membros, • (iii) formas para entrar em contato com membros, • (iv) atas atualizadas das reuniões e • (v) calendário atualizado de encontros, inclu",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 5 requisitos"
         }
       ]
     },
@@ -1194,16 +1517,16 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Possui Conselho de Transparência ou Combate à \u0007",
+      "pergunta": "Possui Conselho de Transparência ou Combate à Corrupção ativo?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1213,16 +1536,16 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Utiliza e publica sistema de gerenciamento \u0007",
+      "pergunta": "Utiliza e publica sistema de gerenciamento eletrônico de informações e documentos municipais?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1232,16 +1555,16 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Possui, pelo menos, duas redes sociais ativas, \u0007",
+      "pergunta": "Possui, pelo menos, duas redes sociais ativas, com ao menos dez postagens feitas no último mês?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1251,16 +1574,16 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Possui uma área destinada a notícias/ \u0007",
+      "pergunta": "Possui uma área destinada a notícias/ informações em seu portal para difundir atualizações pertinentes aos cidadãos, com ao menos dez postagens no último trimestre?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1270,12 +1593,12 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Oferece oportunidades de participação da população na discussão do orçamento, com \u0007 periodicidade anual? \u0007",
+      "pergunta": "Oferece oportunidades de participação da população na discussão do orçamento, com periodicidade anual?",
       "peso": 2,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
@@ -1283,7 +1606,7 @@
           "descricao": "Sim, mas apenas de forma presencial"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim, inclusive com participação digital/"
         }
       ]
@@ -1293,12 +1616,12 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Publica informações sobre as consultas públicas realizadas no último ano, com: \u0007 • (i) divulgação do material relevante, • (ii) possibilidade de participação remota e • (iii) publicação dos resultados.",
+      "pergunta": "Publica informações sobre as consultas públicas realizadas no último ano, com: • (i) divulgação do material relevante, • (ii) possibilidade de participação remota e • (iii) publicação dos resultados. Busca-se por informações centralizadas apresentadas pela sociedade nas consultas públicas reali",
       "peso": 2,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
@@ -1306,7 +1629,7 @@
           "descricao": "Sim, e cumpre até 2 requisitos"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim, e cumpre os 3 requisitos"
         }
       ]
@@ -1316,17 +1639,29 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Publica informações sobre as audiências \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Publica informações sobre as audiências públicas realizadas no último ano, com • (i) divulgação antecipada do calendário, • (ii) transmissão online, • (iii) possibilidade de participação remota e • (iv) publicação dos resultados. Avalia-se a existência de informações centralizadas sobre espaços",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -1335,16 +1670,16 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Divulga carta de serviços aos cidadãos \u0007",
+      "pergunta": "Divulga carta de serviços aos cidadãos atualizada a cada seis meses?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1354,16 +1689,16 @@
       "secao": "Geral",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação Cidadã",
-      "pergunta": "Possibilita o agendamento e/ou prestação \u0007",
+      "pergunta": "Possibilita o agendamento e/ou prestação digital de serviços públicos?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1373,16 +1708,16 @@
       "secao": "Saúde",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas (Saúde)",
-      "pergunta": "O Portal da Transparência está em destaque, a \u0007",
+      "pergunta": "O Portal da Transparência está em destaque, a partir da página principal da Secretaria de Saúde?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1392,16 +1727,20 @@
       "secao": "Saúde",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde divulga \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde divulga mensalmente, no Portal da Transparência, no Portal de Dados Abertos ou na sua página principal, suas bases de dados em formato aberto ( como .csv, .json, .xml .txt, entre outros)?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 0.5,
+          "descricao": "Sim, mas estão desatualizadas"
+        },
+        {
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1411,16 +1750,16 @@
       "secao": "Saúde",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas (Saúde)",
-      "pergunta": "O serviço de acesso à informação está divulgado e \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O serviço de acesso à informação está divulgado e em destaque a partir da página principal da Secretaria de Saúde?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1430,16 +1769,16 @@
       "secao": "Saúde",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde disponibiliza, \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde disponibiliza, em sua página principal, ferramentas de acessibilidade, como símbolo de acessibilidade em destaque, subtitulação por meio de legenda oculta, janela com intérprete da Libras e audiodescrição, em conformidade com as normas de acesso para pessoas com deficiência estabelecidas pelo Estatuto da Pessoa com Deficiência (Lei n° 13.146/2015)?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1449,16 +1788,16 @@
       "secao": "Saúde",
       "dim_key": "plataformas",
       "dim_nome": "Plataformas (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde possui canal \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde possui canal eletrônico para agendamento de consultas, exames e demais serviços de saúde, com fácil acesso e destaque a partir de sua página principal?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1468,17 +1807,21 @@
       "secao": "Saúde",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração e Governança (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde divulga \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde divulga informações sobre sua estrutura, como • (i) organograma • (ii) funções e • (iii) contato?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre todos os requisitos"
         }
       ]
     },
@@ -1487,17 +1830,21 @@
       "secao": "Saúde",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração e Governança (Saúde)",
-      "pergunta": "Divulga agenda da/o Secretária/o de Saúde com \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga agenda da/o Secretária/o de Saúde com periodicidade semanal?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, mas a posteriori"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, de forma antecipada"
         }
       ]
     },
@@ -1506,16 +1853,16 @@
       "secao": "Saúde",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração e Governança (Saúde)",
-      "pergunta": "Possui comissão/comitê/grupo interno dedicado \u0007",
+      "pergunta": "Possui comissão/comitê/grupo interno dedicado a ações de controle interno?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1525,16 +1872,16 @@
       "secao": "Saúde",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração e Governança (Saúde)",
-      "pergunta": "Publica pareceres e/ou relatórios de auditorias \u0007",
+      "pergunta": "Publica pareceres e/ou relatórios de auditorias internas com periodicidade ao menos anual?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1544,17 +1891,21 @@
       "secao": "Saúde",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração e Governança (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade quadrienal, o Plano Municipal de Saúde? \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade quadrienal, o Plano Municipal de Saúde?",
       "peso": 2,
-      "nota_max": 0.5,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
           "nota": 0.5,
           "descricao": "Sim, mas não permite download ou"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, permite download e está atualizado com informações do período vigente"
         }
       ]
     },
@@ -1563,17 +1914,21 @@
       "secao": "Saúde",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração e Governança (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade anual, a Programação Anual de Saúde \u0007 (PAS) ou Plano Anual de Saúde?",
+      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade anual, a Programação Anual de Saúde (PAS) ou Plano Anual de Saúde?",
       "peso": 2,
-      "nota_max": 0.5,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
           "nota": 0.5,
-          "descricao": "Sim, mas não permite download ou"
+          "descricao": "Sim, mas não permite download ou está desatualizado"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, permite download e está atualizado com informações do período vigente"
         }
       ]
     },
@@ -1582,21 +1937,21 @@
       "secao": "Saúde",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração e Governança (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade anual, o Relatório Anual de Gestão (RAG), \u0007 com a avaliação das metas e desempenho físico e financeiro do PAS? \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde pública, com periodicidade anual, o Relatório Anual de Gestão (RAG), com a avaliação das metas e desempenho físico e financeiro do PAS?",
       "peso": 2,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
           "nota": 0.5,
-          "descricao": "Sim, mas não permite download ou"
+          "descricao": "Sim, mas não permite download ou está desatualizado"
         },
         {
-          "nota": 1,
-          "descricao": "Sim, permite download e está"
+          "nota": 1.0,
+          "descricao": "Sim, permite download e está atualizado com informações do período vigente"
         }
       ]
     },
@@ -1605,16 +1960,16 @@
       "secao": "Saúde",
       "dim_key": "admin_governanca",
       "dim_nome": "Administração e Governança (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde divulga em \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde divulga em sua página oficial e de forma acessível e em destaque o Código de Ética ou de Conduta dos servidores públicos?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1624,17 +1979,29 @@
       "secao": "Saúde",
       "dim_key": "transp_dados",
       "dim_nome": "Transparência de Dados (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde divulga dados \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde divulga dados sobre fila de espera para agendamento de consultas e exames, com detalhamento de • (i) especialidade, • (ii) hospital ou clínica, • (iii) faixa etária, • (iv) sexo dos inscritos, • (v) tipo de exame, • (vi) local. Busca-se por informações sobre a f",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 5 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 6 requisitos"
         }
       ]
     },
@@ -1643,17 +2010,29 @@
       "secao": "Saúde",
       "dim_key": "transp_dados",
       "dim_nome": "Transparência de Dados (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde divulga \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde divulga diariamente escalas de profissionais da saúde (médicos(as), incluindo plantonistas, enfermeiros(as) e servidores(as) em geral) incluindo: • (i) nome completo dos profissionais (com CRM e especialidade, no caso de médicos), • (ii) unidade de lotação, • (ii",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 5 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 6 requisitos"
         }
       ]
     },
@@ -1662,17 +2041,29 @@
       "secao": "Saúde",
       "dim_key": "transp_dados",
       "dim_nome": "Transparência de Dados (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde possui \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde possui sistema informatizado de controle de compras, estoque e consumo de insumos e medicamentos, com dados disponibilizados para a população, incluindo: • (i) mecanismo de pesquisa/filtro, • (ii) nome do equipamento de saúde, • (iii) região/endereço e • (iv) medicamentos disponíveis?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -1681,17 +2072,21 @@
       "secao": "Saúde",
       "dim_key": "transp_dados",
       "dim_nome": "Transparência de Dados (Saúde)",
-      "pergunta": "Divulga todos os convênios, termos de \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Divulga todos os convênios, termos de fomento, termos de colaboração e contrato de gestão firmados e vigentes pela Secretaria Municipal de Saúde?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, mas não permite download ou"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, permite download e estão atualizados"
         }
       ]
     },
@@ -1700,17 +2095,29 @@
       "secao": "Saúde",
       "dim_key": "transp_dados",
       "dim_nome": "Transparência de Dados (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde pública dados \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde pública dados sobre a gestão e monitoramento dos contratos de gestão com Organizações Sociais que prestam serviços para a Secretaria Municipal de Saúde, com informações como: • (i) especificação do programa de trabalho proposto pela organização social, • (ii) estip",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 5 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 6 requisitos"
         }
       ]
     },
@@ -1719,17 +2126,21 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "O Conselho Municipal de Saúde foi criado e \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O Conselho Municipal de Saúde foi criado e está ativo?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Há previsão de criação por lei, mas"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, foi criado por lei e está ativo"
         }
       ]
     },
@@ -1738,17 +2149,29 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde divulga, \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde divulga, trimestralmente, informações sobre a atuação do Conselho Municipal de Saúde em uma página única e em destaque, incluindo • (i) legislação de criação, • (ii) lista de membros, • (iii) formas para entrar em contato com membros, • (iv) atas atualizadas das r",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 5 requisitos"
         }
       ]
     },
@@ -1757,17 +2180,17 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde possui \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde possui conselhos gestores de equipamentos de saúde, com participação paritária da sociedade civil?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 1.0,
+          "descricao": "Sim1Dimensões Indicador Pontuação Peso"
         }
       ]
     },
@@ -1776,17 +2199,29 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde divulga, \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde divulga, em página única e em destaque informações sobre os conselhos gestores de equipamentos de saúde, como: • (i) legislação de criação, • (ii) portaria de nomeação dos membros, • (iii) lista dos membros, • (iv) calendários de encontros, • (v) atas de reunião",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 5 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 6 requisitos"
         }
       ]
     },
@@ -1795,16 +2230,16 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde realizou \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde realizou quatro postagens, em rede sociais próprias ou da Prefeitura, sobre sua atuação e/ou serviços prestados no último mês?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1814,16 +2249,16 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde possui uma \u0007",
+      "pergunta": "A Secretaria Municipal de Saúde possui uma área destinada a notícias/informações em seu site principal ou realizou postagens sobre a sua atuação e/ou serviços na página de notícia da Prefeitura com ao menos dez postagens no último trimestre?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1833,17 +2268,21 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde utilizou \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde utilizou mecanismos de participação digital, como consulta pública online, enquetes, fóruns ou reuniões virtuais, no último ano?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Sim, mas não há informação sobre"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e há informação sobre os respectivos resultados"
         }
       ]
     },
@@ -1852,10 +2291,18 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde disponibiliza \u0007",
-      "peso": 1,
-      "nota_max": 0.75,
+      "pergunta": "A Secretaria Municipal de Saúde disponibiliza informações sobre as consultas públicas realizadas no último ano e em vigência, com: • (i) divulgação do material relevante de referência, • (ii) possibilidade de participação remota, • (iii) período de duração, • (iv) quantidade de contribuições e",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
+        {
+          "nota": 0.0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.25,
+          "descricao": "Sim, e cumpre apenas 1 requisito"
+        },
         {
           "nota": 0.5,
           "descricao": "Sim, e cumpre até 2 requisitos"
@@ -1863,6 +2310,10 @@
         {
           "nota": 0.75,
           "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 5 requisitos"
         }
       ]
     },
@@ -1871,17 +2322,29 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde disponibiliza \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde disponibiliza informações sobre as audiências públicas realizadas no último ano, com: • (i) divulgação antecipada do calendário, • (ii) transmissão online, • (iii) possibilidade de participação remota e • (iv) publicação dos resultados. Busca-se informações centr",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -1890,16 +2353,16 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde realizou uma \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde realizou uma Conferência de Saúde nos últimos 4 anos?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1909,17 +2372,29 @@
       "secao": "Saúde",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Saúde)",
-      "pergunta": "A Secretaria Municipal de Saúde divulga \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A Secretaria Municipal de Saúde divulga informações relativas às Conferências de Saúde realizadas, como: • (i) decreto de convocação, • (ii) portarias, • (iii) regimento, • (iv) programação, • (v) relatório final. Em complemento ao indicador anterior, este indicador avalia a existência de in",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 5 requisitos"
         }
       ]
     },
@@ -1928,16 +2403,16 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "A prefeitura possui e divulga um Plano de \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A prefeitura possui e divulga um Plano de Adaptação à Mudança do Clima?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1947,17 +2422,29 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "A prefeitura possui e divulga os seguintes \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A prefeitura possui e divulga os seguintes planos municipais: • (i) Plano Diretor, • (ii) Plano de Habitação, • (iii) Plano de Saneamento Básico, • (iv) Plano de Gerenciamento de Resíduos Sólidos?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -1966,16 +2453,16 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "A prefeitura possui e divulga Plano de Contingência \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A prefeitura possui e divulga Plano de Contingência de Proteção e Defesa Civil?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -1985,16 +2472,16 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "A prefeitura possui e divulga Plano Plurianual \u0007",
+      "pergunta": "A prefeitura possui e divulga Plano Plurianual (PPA) com metas relativas à Proteção e Defesa Civil?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -2004,16 +2491,16 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "A prefeitura possui e divulga Plano Plurianual \u0007",
+      "pergunta": "A prefeitura possui e divulga Plano Plurianual (PPA) com metas relativas a Mudanças Climáticas?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -2023,16 +2510,16 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "A prefeitura divulga informações relativas a \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A prefeitura divulga informações relativas a alertas antecipados de desastres?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -2042,16 +2529,16 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "Possui órgão municipal responsável por ações de \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui órgão municipal responsável por ações de proteção e defesa civil?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -2061,12 +2548,12 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "O órgão municipal de proteção e defesa civil divulga informações sobre sua estrutura como: \u0007 • (i) organograma, \u0007 • (ii) funções e • (iii) contato?",
+      "pergunta": "O órgão municipal de proteção e defesa civil divulga informações sobre sua estrutura como: • (i) organograma, • (ii) funções e • (iii) contato?",
       "peso": 2,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
@@ -2078,7 +2565,23 @@
           "descricao": "Sim, e cumpre 2 requisitos"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 3 requisitos"
+        },
+        {
+          "nota": 0.0,
+          "descricao": "Não"
+        },
+        {
+          "nota": 0.33,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.66,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 1.0,
           "descricao": "Sim, e cumpre os 3 requisitos"
         }
       ]
@@ -2134,17 +2637,25 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "O órgão municipal de meio ambiente divulga \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O órgão municipal de meio ambiente divulga informações sobre sua estrutura como: • (i) organograma, • (ii) funções e • (iii) contato?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.33,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.66,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 3 requisitos"
         }
       ]
     },
@@ -2153,17 +2664,25 @@
       "secao": "Clima",
       "dim_key": "transp_governanca",
       "dim_nome": "Transparência e Governança (Clima)",
-      "pergunta": "O órgão municipal de meio ambiente divulga \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O órgão municipal de meio ambiente divulga informações sobre: • (i) licitações, • (ii) contratos e • (iii) despesas?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.33,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.66,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 3 requisitos"
         }
       ]
     },
@@ -2172,17 +2691,21 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "Possui órgão colegiado de Mudanças Climáticas \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui órgão colegiado de Mudanças Climáticas criado e ativo?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Há previsão de criação por lei, mas"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, foi criado por lei e está ativo"
         }
       ]
     },
@@ -2191,17 +2714,29 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "A prefeitura divulga, trimestralmente, \u0007",
+      "pergunta": "A prefeitura divulga, trimestralmente, informações sobre a atuação do órgão colegiado de mudanças climáticas ou equivalente em uma página única e em destaque, incluindo: • (i) legislação de criação, • (ii) lista de membros, • (iii) formas para entrar em contato com membros, • (iv) atas atualizadas das reuniões e • (v) calendário atualizado de encontros, incluindo realizados e programados?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 5 requisitos"
         }
       ]
     },
@@ -2210,17 +2745,21 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "Possui órgão colegiado de defesa civil ativo? \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "Possui órgão colegiado de defesa civil ativo?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.5,
+          "descricao": "Há previsão de criação por lei, mas"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, foi criado por lei e está ativo"
         }
       ]
     },
@@ -2229,17 +2768,29 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "A prefeitura divulga, trimestralmente, \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A prefeitura divulga, trimestralmente, informações sobre a atuação do órgão colegiado de defesa civil em uma página única e em destaque, incluindo: • (i) legislação de criação, • (ii) lista de membros, • (iii) formas para entrar em contato com membros, • (iv) atas atualizadas das reuniões e • (v) calendário atualizado de encontros, incluindo realizados e programados?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, mas cumpre apenas 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre até 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre até 4 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 5 requisitos"
         }
       ]
     },
@@ -2248,16 +2799,16 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "Possui e divulga informações sobre Núcleos \u0007",
+      "pergunta": "Possui e divulga informações sobre Núcleos Comunitários de Proteção e Defesa Civil (Nupdec)?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -2267,16 +2818,16 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "A prefeitura realizou a etapa municipal da \u0007",
+      "pergunta": "A prefeitura realizou a etapa municipal da última Conferência Nacional de Meio Ambiente?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -2286,17 +2837,29 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "A prefeitura divulga informações relativas à \u0007",
+      "pergunta": "A prefeitura divulga informações relativas à etapa municipal da última Conferência Nacional de Meio Ambiente realizada, contendo • (i) decreto de convocação • (ii) regimento, • (iii) programação e • (iv) relatório final?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -2305,17 +2868,29 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "A prefeitura disponibiliza informações sobre \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "A prefeitura disponibiliza informações sobre as audiências ou consultas públicas relacionadas a mudanças climáticas, proteção e defesa civil no último ano, com: • (i) divulgação antecipada do calendário, • (ii) transmissão online, • (iii) possibilidade de participação remota e • (iv) publicação dos resultados?",
+      "peso": 2,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
-          "descricao": "Sim"
+          "nota": 0.25,
+          "descricao": "Sim, e cumpre 1 requisito"
+        },
+        {
+          "nota": 0.5,
+          "descricao": "Sim, e cumpre 2 requisitos"
+        },
+        {
+          "nota": 0.75,
+          "descricao": "Sim, e cumpre 3 requisitos"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Sim, e cumpre os 4 requisitos"
         }
       ]
     },
@@ -2324,16 +2899,16 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "O órgão de Defesa Civil realizou ao menos três \u0007",
+      "pergunta": "O órgão de Defesa Civil realizou ao menos três postagens em rede sociais próprias ou da prefeitura sobre questões relativas à gestão de riscos de desastres nos últimos três meses?",
       "peso": 1,
-      "nota_max": 1,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
         }
       ]
@@ -2343,17 +2918,37 @@
       "secao": "Clima",
       "dim_key": "comunicacao_participacao",
       "dim_nome": "Comunicação e Participação (Clima)",
-      "pergunta": "O órgão municipal de meio ambiente realizou \u0007",
-      "peso": 1,
-      "nota_max": 1,
+      "pergunta": "O órgão municipal de meio ambiente realizou ao menos três postagens em rede sociais próprias ou da prefeitura sobre questões relativas a mudanças climáticas nos últimos três meses?",
+      "peso": 3,
+      "nota_max": 1.0,
       "opcoes_resposta": [
         {
-          "nota": 0,
+          "nota": 0.0,
           "descricao": "Não"
         },
         {
-          "nota": 1,
+          "nota": 1.0,
           "descricao": "Sim"
+        },
+        {
+          "nota": 1.0,
+          "descricao": "Cálculo das dimensões"
+        },
+        {
+          "nota": 0.0,
+          "descricao": "19 PTS 20-39 PTS 40-59 PTS 60-79 PTS 80-100 PTSPÉSS IMO"
+        },
+        {
+          "nota": 0.0,
+          "descricao": "19,9 pts 20-39,9 ptsRUIM"
+        },
+        {
+          "nota": 0.0,
+          "descricao": "59,9 ptsREGULAR"
+        },
+        {
+          "nota": 0.0,
+          "descricao": "79,9 ptsBOM"
         }
       ]
     }

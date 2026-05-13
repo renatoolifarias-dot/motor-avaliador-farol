@@ -54,12 +54,13 @@ def create_app() -> FastAPI:
         return HTMLResponse(f"<h1>Erro {exc.status_code}</h1><p>{exc.detail}</p>", status_code=exc.status_code)
 
     # Rotas
-    from app.routes import health, auth, avaliacoes, admin, configuracoes
+    from app.routes import health, auth, avaliacoes, admin, configuracoes, revisao
     app.include_router(health.router)
     app.include_router(auth.router)
     app.include_router(avaliacoes.router)
     app.include_router(admin.router)
     app.include_router(configuracoes.router)
+    app.include_router(revisao.router)
     return app
 
 

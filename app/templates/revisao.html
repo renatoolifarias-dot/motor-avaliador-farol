@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% block title %}Revisar — {{ avaliacao.cidade }}/{{ avaliacao.uf }}{% endblock %}
+{% block content %}
+
+<div class="flex items-start justify-between mb-3 flex-wrap gap-3">
+  <div>
+    <a href="/avaliacoes/{{ avaliacao.id }}" class="text-sm text-blue-700 hover:underline">← detalhe</a>
+    <h1 class="text-2xl font-bold text-blue-900">
+      Revisar {{ avaliacao.cidade }}/{{ avaliacao.uf }}
+    </h1>
+    <p class="text-gray-600 text-sm">
+      Confirme ou ajuste cada item. Você (humano) sempre tem a palavra final.
+    </p>
+  </div>
+  <div class="flex items-center gap-3 flex-wrap">
+    <div class="bg-white border rounded-lg px-3 py-2 text-sm">
+      <span class="text-gray-500">Nota geral atual:</span>
+      <strong class="text-blue-900 ml-1">{{ stats.nota_geral }}/100</strong>
+    </div>
+    <div class="bg-white border rounded-lg px-3 py-2 text-sm">
+      <span class="text-gray-500">Revisados:</span>
+      <strong class="text-green-700 ml-1">{{ stats.revisados }}/{{ stats.total }}</strong>
+    </div>
+    <form method="POST" action="/avaliacoes/{{ avaliacao.id }}/confirmar" class="inline"
+          onsubmit="return confirm('Confirmar avaliação final? Vai calcular nota e classificação. Você ainda pode editar depois, mas o status muda pra confirmado.');">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <button class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded font-semibold">
+        ✓ Confirmar avaliação
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Tabs de seção -->
+<div class="flex border-b mb-4">
+  {% for s in secoes %}
+  <a href="/avaliacoes/{{ avaliacao.id }}/revisar?secao={{ s }}"
+     class="px-4 py-2 -mb-px text-sm font-semibold border-b-2
+       {% if s == secao_atual %}border-blue-600 text-blue-900{% else %}border-transparent text-gray-500 hover:text-blue-700{% endif %}">
+    {{ s }}
+  </a>
+  {% endfor %}
+</div>
+
+<!-- Lista de itens (1 por indicador) -->
+<div class="space-y-3" id="itens">
+{% for l in linhas %}
+{% set it = l.item %}
+<div class="bg-white border rounded-lg p-4 {% if it and it.revisado_humano %}border-l-4 border-l-green-500{% endif %}"
+     data-codigo="{{ l.codigo }}">
+
+  <div class="flex justify-between items-start gap-3 mb-2">
+    <div class="flex-1">
+      <span class="badge bg-blue-100 text-blue-800 mr-2">{{ l.codigo }}</span>
+      <span class="text-xs text-gray-500">{{ l.dim_nome }} · peso {{ l.peso }} · max {{ l.nota_max }}</span>
+      <p class="text-sm font-semibold text-gray-900 mt-1">{{ l.pergunta }}</p>
+    </div>
+    {% if it and it.revisado_humano %}
+    <span class="badge bg-green-100 text-green-800 whitespace-nowrap">✓ revisado</span>
+    {% elif it and it.nota is not none %}
+    <span class="badge bg-amber-100 text-amber-800 whitespace-nowrap">aguarda revisão</span>
+    {% else %}
+    <span class="badge bg-gray-100 text-gray-700 whitespace-nowrap">sem nota</span>
+    {% endif %}
+  </div>
+
+  <form class="form-item grid md:grid-cols-12 gap-3 text-sm mt-3"
+        data-codigo="{{ l.codigo }}"
+        action="/avaliacoes/{{ avaliacao.id }}/revisar/{{ l.codigo }}" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf }}">
+
+    <div class="md:col-span-2">
+      <label class="block text-xs text-gray-500 mb-1">Nota</label>
+      <select name="nota" class="w-full border rounded px-2 py-1 text-sm font-mono">
+        {% for o in l.opcoes %}
+          <option value="{{ o.nota }}" {% if it and it.nota == o.nota %}selected{% endif %}>
+            {{ o.nota }} — {{ o.descricao[:40] }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="md:col-span-6">
+      <label class="block text-xs text-gray-500 mb-1">Justificativa</label>
+      <textarea name="justificativa" rows="2"
+        class="w-full border rounded px-2 py-1 text-sm"
+        placeholder="Por que essa nota?">{{ it.justificativa if it else "" }}</textarea>
+    </div>
+
+    <div class="md:col-span-4">
+      <label class="block text-xs text-gray-500 mb-1">URL evidência</label>
+      <input type="url" name="url_evidencia"
+        class="w-full border rounded px-2 py-1 text-sm font-mono"
+        value="{{ it.url_evidencia if it else '' }}"
+        placeholder="https://...">
+    </div>
+
+    <div class="md:col-span-10">
+      <label class="block text-xs text-gray-500 mb-1">O que falta (recomendação ao município)</label>
+      <input type="text" name="o_que_falta"
+        class="w-full border rounded px-2 py-1 text-sm"
+        value="{{ it.o_que_falta if it else '' }}">
+    </div>
+
+    <div class="md:col-span-2 flex items-end gap-2">
+      <input type="hidden" name="revisado" value="1">
+      <button type="submit"
+        class="w-full bg-blue-900 hover:bg-blue-800 text-white text-sm py-1.5 rounded font-semibold">
+        Salvar ✓
+      </button>
+    </div>
+  </form>
+
+  {% if it and it.ia_modelo %}
+  <div class="text-xs text-gray-500 mt-2 pt-2 border-t">
+    <strong>IA disse:</strong>
+    {{ it.ia_modelo }}
+    · confiança {{ "%.0f"|format((it.confianca or 0) * 100) }}%
+    {% if it.desconto_motivos %}· descontos: {{ it.desconto_motivos | join(", ") }}{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endfor %}
+</div>
+
+<script>
+// Submit AJAX pra não recarregar a página inteira
+document.querySelectorAll('.form-item').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.innerText = '...';
+    try {
+      const resp = await fetch(form.action, {method: 'POST', body: fd});
+      const json = await resp.json();
+      if (json.ok) {
+        btn.innerText = '✓';
+        btn.classList.remove('bg-blue-900', 'hover:bg-blue-800');
+        btn.classList.add('bg-green-600');
+        // marca a linha como revisada
+        const card = form.closest('[data-codigo]');
+        card.classList.add('border-l-4', 'border-l-green-500');
+        // atualiza badge
+        const badge = card.querySelector('.badge');
+        setTimeout(() => {
+          btn.innerText = 'Salvar ✓';
+          btn.disabled = false;
+          btn.classList.remove('bg-green-600');
+          btn.classList.add('bg-blue-900', 'hover:bg-blue-800');
+        }, 1200);
+      } else {
+        throw new Error('falha');
+      }
+    } catch (err) {
+      btn.innerText = '✗ erro';
+      btn.disabled = false;
+    }
+  });
+});
+</script>
+
+{% endblock %}

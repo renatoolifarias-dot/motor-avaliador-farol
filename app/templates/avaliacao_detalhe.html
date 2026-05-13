@@ -103,6 +103,12 @@
       </button>
     </form>
     {% endif %}
+    {% if pontuados > 0 %}
+    <a href="/avaliacoes/{{ avaliacao.id }}/revisar"
+       class="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded font-semibold no-underline">
+      📋 Revisar {{ pontuados }} itens
+    </a>
+    {% endif %}
   </div>
 </div>
 
