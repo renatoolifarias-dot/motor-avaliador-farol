@@ -1,4 +1,5 @@
 from datetime import datetime
+from app.services.tz import now_bahia
 from typing import Optional
 from sqlmodel import SQLModel, Field
 
@@ -12,5 +13,5 @@ class Usuario(SQLModel, table=True):
     perfil: str = Field(default="avaliador", max_length=20)  # admin | avaliador
     ativo: bool = Field(default=True)
     precisa_trocar_senha: bool = Field(default=True)
-    criado_em: datetime = Field(default_factory=datetime.utcnow)
+    criado_em: datetime = Field(default_factory=now_bahia)
     ultimo_login: Optional[datetime] = None

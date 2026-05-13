@@ -12,6 +12,7 @@ Idempotência: gravar_avaliacao com o mesmo codigo sobrescreve (não duplica).
 """
 from __future__ import annotations
 from datetime import datetime
+from app.services.tz import now_bahia
 from typing import Any
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -151,7 +152,7 @@ async def gravar_avaliacao(
     item.desconto_motivos = desconto_motivos or []
     item.confianca = float(confianca)
     item.ia_modelo = ia_modelo or None
-    item.ia_gerado_em = datetime.utcnow()
+    item.ia_gerado_em = now_bahia()
     await session.commit()
 
     return {

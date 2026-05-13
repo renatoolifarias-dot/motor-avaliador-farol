@@ -5,6 +5,7 @@ Depois pode virar Celery task se quiser paralelismo de várias cidades.
 """
 from __future__ import annotations
 from datetime import datetime
+from app.services.tz import now_bahia
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from app.database import AsyncSessionFactory
@@ -22,7 +23,7 @@ async def _set_status(session: AsyncSession, aid: int, status: str) -> None:
     av = await session.get(Avaliacao, aid)
     if av:
         av.status = status
-        av.atualizado_em = datetime.utcnow()
+        av.atualizado_em = now_bahia()
         await session.commit()
 
 

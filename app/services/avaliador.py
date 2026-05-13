@@ -9,6 +9,7 @@ Custo estimado por cidade: ~US$ 0.20-0.40 (vs US$ 6+ na versão antiga).
 """
 from __future__ import annotations
 from datetime import datetime
+from app.services.tz import now_bahia
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import AsyncSessionFactory
@@ -24,7 +25,7 @@ from app.services.triagem import (
 )
 
 
-MAX_ITER_POR_INDICADOR = 8   # tipicamente 3-4 chamadas (search → read → grava)
+MAX_ITER_POR_INDICADOR = 4   # tipicamente 3-4 chamadas (search → read → grava)
 
 
 async def _log(session: AsyncSession, aid: int, nivel: str, msg: str) -> None:
@@ -36,7 +37,7 @@ async def _set_status(session: AsyncSession, aid: int, status: str) -> None:
     av = await session.get(Avaliacao, aid)
     if av:
         av.status = status
-        av.atualizado_em = datetime.utcnow()
+        av.atualizado_em = now_bahia()
         await session.commit()
 
 
@@ -62,8 +63,19 @@ async def avaliar_indicador(
     n_chamadas_inicio = cliente.total_chamadas
 
     for it in range(MAX_ITER_POR_INDICADOR):
+        # Se atingiu metade do orçamento e ainda não gravou, força tom imperativo
+        if it == MAX_ITER_POR_INDICADOR - 1 and not gravou:
+            messages.append({
+                "role": "user",
+                "content": (
+                    f"ESTA É SUA ÚLTIMA CHANCE. Chame gravar_avaliacao AGORA "
+                    f"para o indicador {ind['codigo']} com base no que já viu. "
+                    f"Se não há evidência, use nota=0 com justificativa explicando isso."
+                ),
+            })
+
         resp = await cliente.chamar(
-            system=system_blocks,            # list com cache_control
+            system=system_blocks,
             messages=messages,
             tools=TOOLS_SCHEMA,
             max_tokens=2048,
@@ -99,9 +111,28 @@ async def avaliar_indicador(
 
         messages.append({"role": "user", "content": results})
 
-        # Se já gravou e a IA não está pedindo mais nada, sai
         if gravou and resp.stop_reason == "end_turn":
             break
+
+    # FALLBACK FINAL: se IA não gravou em max_iter chamadas, gravamos 0 nós mesmos
+    if not gravou:
+        from app.services.tools import gravar_avaliacao as _gravar
+        async with AsyncSessionFactory() as ses:
+            await _gravar(
+                ses, avaliacao_id,
+                codigo=ind["codigo"],
+                nota=0.0,
+                justificativa=(
+                    f"IA não conseguiu pontuar após {MAX_ITER_POR_INDICADOR} chamadas — "
+                    f"gravação automática como 0. Revisor humano deve verificar."
+                ),
+                url_evidencia="(IA não retornou)",
+                o_que_falta=f"Avaliar manualmente: {(ind.get('pergunta') or '').strip()[:200]}",
+                desconto_motivos=["IA não convergiu (max_iter)"],
+                confianca=0.2,
+                ia_modelo=f"fallback_zero_{cliente.modelo}",
+            )
+        gravou = True
 
     return gravou, cliente.total_chamadas - n_chamadas_inicio
 

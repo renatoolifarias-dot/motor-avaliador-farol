@@ -1,6 +1,7 @@
 """Login, logout, sessões, CSRF, decoradores de proteção."""
 import secrets
 from datetime import datetime
+from app.services.tz import now_bahia
 from typing import Optional
 from fastapi import Request, HTTPException, Depends, status
 from fastapi.responses import RedirectResponse
@@ -86,6 +87,6 @@ async def autenticar(session: AsyncSession, username: str, senha: str) -> Option
         return None
     if not verifica_senha(senha, user.senha_hash):
         return None
-    user.ultimo_login = datetime.utcnow()
+    user.ultimo_login = now_bahia()
     await session.commit()
     return user

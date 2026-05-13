@@ -1,4 +1,5 @@
 from datetime import datetime
+from app.services.tz import now_bahia
 from typing import Optional
 from sqlmodel import SQLModel, Field, Column, JSON
 
@@ -17,8 +18,8 @@ class Avaliacao(SQLModel, table=True):
     classificacao: Optional[str] = Field(default=None, max_length=20)
     pontuacoes_dimensao: Optional[dict] = Field(sa_column=Column(JSON), default=None)
     dossie_resumo: Optional[dict] = Field(sa_column=Column(JSON), default=None)
-    criado_em: datetime = Field(default_factory=datetime.utcnow, index=True)
-    atualizado_em: datetime = Field(default_factory=datetime.utcnow)
+    criado_em: datetime = Field(default_factory=now_bahia, index=True)
+    atualizado_em: datetime = Field(default_factory=now_bahia)
     publicado_em: Optional[datetime] = None
     url_publica: Optional[str] = Field(default=None, max_length=500)
 
@@ -53,7 +54,7 @@ class AvaliacaoPagina(SQLModel, table=True):
     tipo: str = Field(default="html", max_length=20)  # html | pdf | doc | image
     titulo: Optional[str] = Field(default=None, max_length=500)
     texto: Optional[str] = None                       # texto extraído (pode ser longo)
-    capturado_em: datetime = Field(default_factory=datetime.utcnow)
+    capturado_em: datetime = Field(default_factory=now_bahia)
     profundidade: int = Field(default=0)
 
 
@@ -63,4 +64,4 @@ class AvaliacaoLog(SQLModel, table=True):
     avaliacao_id: int = Field(foreign_key="avaliacoes.id", index=True)
     nivel: str = Field(default="info", max_length=10)  # info | warn | error
     mensagem: str
-    criado_em: datetime = Field(default_factory=datetime.utcnow, index=True)
+    criado_em: datetime = Field(default_factory=now_bahia, index=True)
