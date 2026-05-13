@@ -7,41 +7,175 @@
 <title>{{ avaliacao.cidade }}/{{ avaliacao.uf }} · ITGP {{ avaliacao.ciclo }} · Farol Público</title>
 <style>
 * { box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: #f3f4f6; color: #111827; line-height: 1.5; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f3f4f6; color: #111827; line-height: 1.55;
+  font-size: 14px;
+}
 .container { max-width: 960px; margin: 0 auto; padding: 24px; }
-.card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.card {
+  background: white; border-radius: 12px; padding: 24px;
+  margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
 h1 { color: #1e3a8a; margin: 0 0 8px; font-size: 32px; }
-h2 { color: #1e3a8a; margin-top: 24px; font-size: 22px; border-bottom: 2px solid #fbbf24; padding-bottom: 6px; }
-h3 { color: #1e3a8a; font-size: 17px; margin: 16px 0 4px; }
-.subtitle { color: #6b7280; font-size: 14px; }
-.banner { background: linear-gradient(135deg, #1e3a8a, #1e40af); color: white; padding: 32px 24px; border-radius: 12px; margin-bottom: 16px; }
-.banner h1 { color: white; }
-.banner .subtitle { color: rgba(255,255,255,0.8); }
-.nota { font-size: 64px; font-weight: 900; line-height: 1; }
-.classif { display: inline-block; padding: 4px 12px; border-radius: 9999px; font-size: 14px; font-weight: 600; margin-left: 12px; vertical-align: middle; }
+h2 { color: #1e3a8a; margin: 0 0 16px; font-size: 22px; border-bottom: 2px solid #fbbf24; padding-bottom: 6px; }
+h3 { color: #1e3a8a; font-size: 16px; margin: 0; line-height: 1.3; }
+
+/* Banner com nota */
+.banner {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  color: white; padding: 32px 24px; border-radius: 12px; margin-bottom: 16px;
+}
+.banner h1 { color: white; font-size: 36px; }
+.banner .subtitle { color: rgba(255,255,255,0.85); font-size: 14px; }
+.nota-grande { font-size: 64px; font-weight: 900; line-height: 1; display: inline-block; }
+.nota-100 { font-size: 24px; vertical-align: top; margin-top: 8px; display: inline-block; }
+.classif {
+  display: inline-block; padding: 6px 16px; border-radius: 9999px;
+  font-size: 14px; font-weight: 700; margin-left: 12px; vertical-align: middle;
+}
 .classif.Alta { background: #d1fae5; color: #065f46; }
 .classif.Média, .classif.Media { background: #fef3c7; color: #92400e; }
 .classif.Baixa { background: #fee2e2; color: #991b1b; }
 .classif.Mínima, .classif.Minima { background: #fecaca; color: #7f1d1d; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-.stat { background: #f9fafb; padding: 12px; border-radius: 8px; }
-.stat .v { font-size: 22px; font-weight: 700; color: #1e3a8a; }
-.stat .l { font-size: 12px; color: #6b7280; text-transform: uppercase; }
-.dim-bar { background: #e5e7eb; height: 8px; border-radius: 4px; margin-top: 4px; overflow: hidden; }
+
+/* Stats globais — grid com gaps generosos */
+.stats-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+.stat {
+  background: #f9fafb; padding: 16px; border-radius: 8px;
+  border-left: 3px solid #1e3a8a;
+}
+.stat .v { font-size: 26px; font-weight: 700; color: #1e3a8a; display: block; line-height: 1; }
+.stat .l {
+  font-size: 11px; color: #6b7280;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-top: 6px; display: block;
+}
+
+/* Tabela por dimensão */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+table th, table td {
+  padding: 10px 12px; text-align: left;
+  border-bottom: 1px solid #e5e7eb; vertical-align: top;
+}
+table th {
+  background: #f9fafb; font-size: 10px; text-transform: uppercase;
+  color: #6b7280; font-weight: 600; letter-spacing: 0.5px;
+}
+.dim-bar { background: #e5e7eb; height: 6px; border-radius: 3px; overflow: hidden; margin-top: 6px; }
 .dim-bar > div { background: #1e3a8a; height: 100%; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-table th, table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
-table th { background: #f9fafb; font-size: 11px; text-transform: uppercase; color: #6b7280; font-weight: 600; }
-.nota-cell { font-weight: 600; text-align: right; font-family: ui-monospace, monospace; }
-.disclaimers { background: #fef9c3; padding: 16px; border-left: 4px solid #fbbf24; border-radius: 0 8px 8px 0; font-size: 13px; }
-.disclaimers ol { padding-left: 20px; margin: 8px 0; }
-.disclaimers li { margin-bottom: 6px; }
-footer { text-align: center; color: #6b7280; font-size: 12px; padding: 24px 16px; }
+.col-secao { color: #6b7280; font-size: 11px; font-weight: normal; }
+.col-pct-num { font-size: 16px; font-weight: 700; color: #1e3a8a; }
+
+/* Disclaimers */
+.disclaimers {
+  background: #fef9c3; padding: 14px 16px;
+  border-left: 4px solid #fbbf24; border-radius: 0 8px 8px 0;
+  font-size: 13px;
+}
+.disclaimers ol { padding-left: 20px; margin: 8px 0 0; }
+.disclaimers li { margin-bottom: 8px; }
+
+/* ============================
+   ITEM — layout em grid (não float)
+   ============================ */
+.item-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.item-card.nao-avaliado {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+}
+.item-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: start;
+}
+.item-content { min-width: 0; }
+.item-cod {
+  display: inline-block;
+  background: #dbeafe; color: #1e40af;
+  font-size: 11px; font-weight: 600;
+  padding: 2px 8px; border-radius: 4px;
+  font-family: ui-monospace, "Courier New", monospace;
+  margin-right: 6px;
+}
+.item-peso {
+  font-size: 11px; color: #6b7280;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+.item-pergunta {
+  font-weight: 600; color: #111827;
+  margin: 8px 0 0; font-size: 14px;
+  line-height: 1.4;
+}
+.item-justif {
+  margin: 10px 0 0; font-size: 13px;
+  color: #374151; line-height: 1.5;
+}
+.item-evidencia {
+  margin: 8px 0 0; font-size: 12px;
+  word-break: break-all;
+}
+.item-evidencia a { color: #1d4ed8; }
+.item-recomenda {
+  margin: 10px 0 0; padding: 8px 12px;
+  background: #fef9c3; border-radius: 4px;
+  font-size: 12px; color: #78350f;
+  line-height: 1.4;
+}
+
+/* Pill da nota — coluna lateral */
+.nota-pill {
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  min-width: 88px;
+  font-family: ui-monospace, monospace;
+}
+.nota-pill .n {
+  font-size: 22px; font-weight: 700; line-height: 1;
+  display: block;
+}
+.nota-pill .max {
+  font-size: 11px; color: #6b7280; margin-top: 4px;
+}
+.nota-pill.alta { background: #d1fae5; }
+.nota-pill.alta .n { color: #065f46; }
+.nota-pill.media { background: #fef3c7; }
+.nota-pill.media .n { color: #92400e; }
+.nota-pill.baixa { background: #fee2e2; }
+.nota-pill.baixa .n { color: #991b1b; }
+.nota-pill.zero { background: #fecaca; }
+.nota-pill.zero .n { color: #7f1d1d; }
+.nota-pill.na { background: #f3f4f6; }
+.nota-pill.na .n { color: #9ca3af; font-size: 18px; }
+.nota-pill.na .max { color: #9ca3af; }
+
+footer {
+  text-align: center; color: #6b7280; font-size: 12px;
+  padding: 24px 16px;
+}
+
 a { color: #1d4ed8; }
+
+/* IMPRESSÃO / PDF */
 @media print {
   body { background: white; }
-  .card, .banner { box-shadow: none; break-inside: avoid; }
+  .card, .banner { box-shadow: none; }
+  .item-card { break-inside: avoid; page-break-inside: avoid; }
   .no-print { display: none !important; }
+  /* Repete cabeçalho de dimensão em quebra de página */
+  h2 { page-break-after: avoid; }
 }
 </style>
 </head>
@@ -52,9 +186,9 @@ a { color: #1d4ed8; }
   <div class="banner">
     <h1>{{ avaliacao.cidade }}/{{ avaliacao.uf }}</h1>
     <p class="subtitle">Avaliação ITGP — Ciclo {{ avaliacao.ciclo }} · Farol Público / Instituto Nossa Ilhéus</p>
-    <div style="margin-top: 16px;">
-      <span class="nota">{{ "%.2f"|format(avaliacao.nota_geral or 0) }}</span>
-      <span style="font-size: 24px;">/100</span>
+    <div style="margin-top: 18px;">
+      <span class="nota-grande">{{ "%.2f"|format(avaliacao.nota_geral or 0) }}</span>
+      <span class="nota-100">/100</span>
       <span class="classif {{ avaliacao.classificacao }}">{{ avaliacao.classificacao }}</span>
     </div>
     <div class="no-print" style="margin-top: 20px;">
@@ -68,26 +202,26 @@ a { color: #1d4ed8; }
 
   <!-- Stats globais -->
   <div class="card">
-    <div class="grid">
+    <div class="stats-grid">
       <div class="stat">
-        <div class="v">{{ total }}</div>
-        <div class="l">Indicadores avaliados</div>
+        <span class="v">{{ total }}</span>
+        <span class="l">Indicadores avaliados</span>
       </div>
       <div class="stat">
-        <div class="v">{{ confirmados }}</div>
-        <div class="l">Revisados por humano</div>
+        <span class="v">{{ confirmados }}</span>
+        <span class="l">Revisados por humano</span>
       </div>
       <div class="stat">
-        <div class="v">{{ pdfs }}</div>
-        <div class="l">PDFs analisados</div>
+        <span class="v">{{ pdfs }}</span>
+        <span class="l">PDFs analisados</span>
       </div>
       <div class="stat">
-        <div class="v">{{ paginas }}</div>
-        <div class="l">Páginas crawleadas</div>
+        <span class="v">{{ paginas }}</span>
+        <span class="l">Páginas crawleadas</span>
       </div>
     </div>
-    <p style="margin-top: 16px; font-size: 13px; color: #6b7280;">
-      Publicado em {{ publicado_em }} · Ciclo de avaliação {{ avaliacao.ciclo }}
+    <p style="margin-top: 16px; font-size: 12px; color: #6b7280;">
+      Publicado em {{ publicado_em }} · Ciclo {{ avaliacao.ciclo }}
     </p>
   </div>
 
@@ -96,16 +230,24 @@ a { color: #1d4ed8; }
     <h2>Notas por dimensão</h2>
     <table>
       <thead>
-        <tr><th>Dimensão</th><th>Itens</th><th>Soma ponderada</th><th>%</th></tr>
+        <tr>
+          <th style="width: 50%;">Dimensão</th>
+          <th style="width: 12%;">Itens</th>
+          <th style="width: 18%;">Soma ponderada</th>
+          <th style="width: 20%;">%</th>
+        </tr>
       </thead>
       <tbody>
       {% for d in dimensoes %}
         <tr>
-          <td>{{ d.dim_nome }} <small style="color:#6b7280;">({{ d.secao }})</small></td>
+          <td>
+            <strong>{{ d.dim_nome }}</strong><br>
+            <span class="col-secao">{{ d.secao }}</span>
+          </td>
           <td>{{ d.pontuados }}/{{ d.total }}</td>
           <td>{{ "%.1f"|format(d.soma or 0) }}/{{ d.peso_total }}</td>
-          <td style="width: 200px;">
-            <strong>{{ "%.0f"|format(d.pct or 0) }}%</strong>
+          <td>
+            <span class="col-pct-num">{{ "%.0f"|format(d.pct or 0) }}%</span>
             <div class="dim-bar"><div style="width: {{ d.pct or 0 }}%;"></div></div>
           </td>
         </tr>
@@ -124,38 +266,57 @@ a { color: #1d4ed8; }
         <li><strong>Metodologia:</strong> usa o Índice de Transparência e Governança Pública (ITGP), 3ª edição (2025), da Transparência Internacional Brasil, sem alteração nos pesos ou critérios.</li>
         <li><strong>Apoio de IA:</strong> a primeira pontuação é feita por modelo de linguagem (Anthropic Claude), revisada por avaliador humano antes da publicação.</li>
         <li><strong>Não-oficial:</strong> os resultados aqui apresentados não foram chancelados pela Transparência Internacional Brasil.</li>
-        <li><strong>Solicitação de correção:</strong> identificou alguma informação desatualizada ou que mereça revisão? Acesse <a href="https://farolpublico.com.br/canal-comunicacao.html">canal de comunicação</a>.</li>
+        <li><strong>Solicitação de correção:</strong> identificou alguma informação desatualizada ou que mereça revisão? Acesse o <a href="https://farolpublico.com.br/canal-comunicacao.html">canal de comunicação</a>.</li>
       </ol>
     </div>
   </div>
 
-  <!-- Detalhe item-a-item -->
+  <!-- Detalhe item-a-item por dimensão -->
   {% for d in dimensoes %}
     <div class="card">
-      <h2>{{ d.dim_nome }} <small style="color:#6b7280;font-weight:normal;font-size:14px;">({{ d.secao }})</small></h2>
+      <h2>{{ d.dim_nome }} <span class="col-secao">({{ d.secao }})</span></h2>
+
       {% for it in d.itens %}
-      <div style="margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #f3f4f6;">
-        <h3>
-          {{ it.codigo }}
-          <span style="font-weight: normal; font-size: 14px; color: #6b7280;">
-            · peso {{ it.peso }}
-          </span>
-          <span class="nota-cell" style="float: right; color: #1e3a8a;">
-            {{ "%.2f"|format(it.nota or 0) }}/{{ it.nota_max }}
-          </span>
-        </h3>
-        <p style="margin: 6px 0; font-weight: 500;">{{ it.pergunta }}</p>
-        {% if it.justificativa %}
-        <p style="font-size: 14px; color: #4b5563;">{{ it.justificativa }}</p>
-        {% endif %}
-        {% if it.url_evidencia and it.url_evidencia.startswith("http") %}
-        <p style="font-size: 13px;"><strong>Evidência:</strong> <a href="{{ it.url_evidencia }}" target="_blank">{{ it.url_evidencia[:80] }}{% if it.url_evidencia|length > 80 %}…{% endif %}</a></p>
-        {% endif %}
-        {% if it.o_que_falta %}
-        <p style="font-size: 13px; color: #92400e; background: #fef9c3; padding: 6px 10px; border-radius: 4px; margin-top: 6px;">
-          <strong>📌 Recomendação:</strong> {{ it.o_que_falta }}
-        </p>
-        {% endif %}
+      {% set nota_val = it.nota or 0 %}
+      {% set pct_nota = (nota_val / it.nota_max) * 100 if it.nota_max else 0 %}
+      {% set tem_dados = (it.justificativa and it.justificativa|length > 5) or (it.url_evidencia and it.url_evidencia|length > 5) %}
+      {% set cls_pill = 'alta' if pct_nota >= 75 else 'media' if pct_nota >= 50 else 'baixa' if pct_nota > 0 else ('na' if not tem_dados else 'zero') %}
+
+      <div class="item-card {% if not tem_dados %}nao-avaliado{% endif %}">
+        <div class="item-grid">
+          <div class="item-content">
+            <span class="item-cod">{{ it.codigo }}</span>
+            <span class="item-peso">peso {{ it.peso }} · max {{ it.nota_max }}</span>
+            <p class="item-pergunta">{{ it.pergunta }}</p>
+
+            {% if it.justificativa %}
+            <p class="item-justif">{{ it.justificativa }}</p>
+            {% endif %}
+
+            {% if it.url_evidencia and it.url_evidencia.startswith("http") %}
+            <p class="item-evidencia">
+              <strong>Evidência:</strong>
+              <a href="{{ it.url_evidencia }}" target="_blank" rel="noopener">{{ it.url_evidencia }}</a>
+            </p>
+            {% endif %}
+
+            {% if it.o_que_falta %}
+            <p class="item-recomenda">
+              <strong>📌 Recomendação:</strong> {{ it.o_que_falta }}
+            </p>
+            {% endif %}
+          </div>
+
+          <div class="nota-pill {{ cls_pill }}">
+            {% if not tem_dados %}
+              <span class="n">—</span>
+              <div class="max">não avaliado</div>
+            {% else %}
+              <span class="n">{{ "%.2f"|format(nota_val) }}</span>
+              <div class="max">/ {{ it.nota_max }}</div>
+            {% endif %}
+          </div>
+        </div>
       </div>
       {% endfor %}
     </div>
