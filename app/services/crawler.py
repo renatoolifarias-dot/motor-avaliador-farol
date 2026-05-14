@@ -49,7 +49,9 @@ def _eh_html(url: str) -> bool:
 
 
 def _eh_pdf(url: str) -> bool:
-    return url.lower().split("?")[0].endswith(".pdf")
+    """Detecta PDF por extensão (com ou sem query string)."""
+    u = url.lower().split("?")[0].split("#")[0]
+    return u.endswith(".pdf")
 
 
 async def _capturar_html(page, url: str, profundidade: int) -> Optional[PaginaCapturada]:
@@ -105,14 +107,20 @@ async def _capturar_html(page, url: str, profundidade: int) -> Optional[PaginaCa
 
 
 async def _capturar_pdf(context, url: str, profundidade: int) -> Optional[PaginaCapturada]:
-    """Baixa PDF e extrai texto via pypdf."""
+    """Baixa PDF e extrai texto via pypdf. Aceita URL com Content-Type application/pdf
+    mesmo sem extensão .pdf."""
     try:
-        # browser context tem cookies do Cloudflare (vc preencheu navegando antes)
         resp = await context.request.get(url, timeout=30000)
     except Exception as e:
         logger.warning("pdf_fetch_error", url=url, err=str(e)[:120])
         return None
     if resp.status >= 400:
+        return None
+
+    # Verifica Content-Type (fallback se URL não termina com .pdf)
+    headers = resp.headers or {}
+    ct = (headers.get("content-type") or "").lower()
+    if "pdf" not in ct and not _eh_pdf(url):
         return None
 
     data = await resp.body()
@@ -159,7 +167,7 @@ LINKS_BLOQUEADOS_RE = re.compile(
 
 async def crawl(
     urls_seed: list[str],
-    max_paginas: int = 50,
+    max_paginas: int = 80,
     profundidade_max: int = 2,
 ) -> list[PaginaCapturada]:
     """Crawler BFS. Recebe URLs sementes (do descobridor), navega
@@ -195,7 +203,13 @@ async def crawl(
             if _eh_pdf(url):
                 p = await _capturar_pdf(context, url, prof)
             elif _eh_html(url):
+                # tenta como HTML primeiro
                 p = await _capturar_html(page, url, prof)
+                # Se status é 200 mas página parece vazia, talvez é PDF
+                if p and p.tipo == "html" and len((p.texto or "").strip()) < 100:
+                    p_pdf = await _capturar_pdf(context, url, prof)
+                    if p_pdf:
+                        p = p_pdf
             else:
                 continue
 
