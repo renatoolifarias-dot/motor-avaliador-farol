@@ -1,14 +1,10 @@
-"""Orquestrador de avaliação por IA — versão multi-agente paralelo.
+"""Orquestrador de avaliação por IA — sequencial com triagem afrouxada.
 
-Replica a arquitetura Cowork: 4 macro-grupos rodando em paralelo via asyncio.
-Cada grupo cuida de ~30 indicadores (3 dimensões), com 1 cliente compartilhado.
-
-Mudanças v4 (Sprint 6a + 6b):
-- Triagem afrouxada: min_score=0, sempre chama IA (sem zeros automáticos)
-- 4 macro-grupos paralelos (gather), reduz tempo total ~4×
+Mudanças v4:
+- Triagem afrouxada (Sprint 6a): min_score=0, sempre chama IA
+- Sequential (revertido 6b): paralelo quebrava cache e disparava rate limit
 """
 from __future__ import annotations
-import asyncio
 from datetime import datetime
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -48,14 +44,11 @@ def _to_dict(block) -> dict:
 
 
 async def avaliar_indicador(
-    cliente: ClienteIA,
-    avaliacao_id: int,
+    cliente: ClienteIA, avaliacao_id: int,
     cidade: str, uf: str, ciclo: int,
     grupo: dict, ind: dict,
-    lista_paginas_magra: str,
-    system_blocks: list,
+    lista_paginas_magra: str, system_blocks: list,
 ) -> tuple[bool, int]:
-    """Loop Tool Use para 1 indicador."""
     user_msg = gerar_user_message(cidade, uf, ciclo, grupo, ind, lista_paginas_magra)
     messages: list[dict] = [{"role": "user", "content": user_msg}]
     gravou = False
@@ -103,7 +96,7 @@ async def avaliar_indicador(
         if gravou and resp.stop_reason == "end_turn":
             break
 
-    # Fallback: grava nota 0 se IA não convergiu
+    # Fallback obrigatório
     if not gravou:
         async with AsyncSessionFactory() as ses:
             await gravar_avaliacao(
@@ -122,7 +115,8 @@ async def avaliar_indicador(
 
 
 async def avaliar_avaliacao(avaliacao_id: int) -> dict:
-    """Avaliação multi-agente paralelo: 4 macro-grupos rodam em parallel via asyncio.gather."""
+    """Avaliação sequencial dimensão por dimensão (sem multi-agent paralelo).
+    Mantém triagem afrouxada (min_score=0) — sempre chama IA."""
     async with AsyncSessionFactory() as session:
         av = await session.get(Avaliacao, avaliacao_id)
         if not av:
@@ -134,8 +128,8 @@ async def avaliar_avaliacao(avaliacao_id: int) -> dict:
         await _set_status(session, avaliacao_id, "avaliando_ia")
         await _log(
             session, avaliacao_id, "info",
-            f"Início avaliação multi-agente · {cliente.modelo} · "
-            f"{len(paginas_norm)} páginas no dossiê"
+            f"Início avaliação · {cliente.modelo} · "
+            f"{len(paginas_norm)} páginas no dossiê · triagem afrouxada"
         )
 
     system_blocks = [{
@@ -147,79 +141,54 @@ async def avaliar_avaliacao(avaliacao_id: int) -> dict:
     indicadores = carregar_indicadores()
     grupos = agrupar_por_dimensao(indicadores)
 
-    # Agrupa as 12 dimensões em 4 macro-grupos balanceados
-    macro_grupos = [[], [], [], []]
-    counts = [0, 0, 0, 0]
-    for g in sorted(grupos, key=lambda x: -len(x["indicadores"])):
-        idx = min(range(4), key=lambda k: counts[k])
-        macro_grupos[idx].append(g)
-        counts[idx] += len(g["indicadores"])
+    total_gravados = 0
+    total_falhas = 0
 
-    async with AsyncSessionFactory() as session:
-        await _log(
-            session, avaliacao_id, "info",
-            f"Multi-agente: 4 grupos paralelos com {counts} indicadores"
-        )
-
-    async def processar_macro(macro_idx: int, grupos_macro: list) -> tuple[int, int]:
-        """Processa um macro-grupo sequencialmente. Os 4 macros rodam em paralelo."""
-        g_macro, f_macro = 0, 0
-        for grupo in grupos_macro:
-            async with AsyncSessionFactory() as session:
-                await _log(
-                    session, avaliacao_id, "info",
-                    f"[macro {macro_idx+1}] → {grupo['secao']}/{grupo['dim_nome']} "
-                    f"({len(grupo['indicadores'])} ind)"
+    for grupo in grupos:
+        async with AsyncSessionFactory() as session:
+            await _log(
+                session, avaliacao_id, "info",
+                f"→ Dim **{grupo['secao']}/{grupo['dim_nome']}** ({len(grupo['indicadores'])} ind)"
+            )
+        g_grupo, f_grupo = 0, 0
+        for ind in grupo["indicadores"]:
+            keywords = extrair_keywords(ind.get("pergunta", ""))
+            relevantes, _ = paginas_relevantes(paginas_norm, keywords, top_n=8, min_score=0)
+            if not relevantes:
+                relevantes = paginas_norm[:6]
+            lista_relevante = "\n".join(
+                f"- [{p['tipo']}] {p['url']}  ({(p['titulo'] or '')[:80]})"
+                for p in relevantes
+            )
+            try:
+                gravou, _ = await avaliar_indicador(
+                    cliente, avaliacao_id, av.cidade, av.uf, av.ciclo,
+                    grupo, ind, lista_relevante, system_blocks,
                 )
-            for ind in grupo["indicadores"]:
-                # Triagem só prioriza páginas (min_score=0 — sempre chama IA)
-                keywords = extrair_keywords(ind.get("pergunta", ""))
-                relevantes, _ = paginas_relevantes(paginas_norm, keywords, top_n=8, min_score=0)
-                if not relevantes:
-                    relevantes = paginas_norm[:6]
-                lista_relevante = "\n".join(
-                    f"- [{p['tipo']}] {p['url']}  ({(p['titulo'] or '')[:80]})"
-                    for p in relevantes
-                )
-                try:
-                    gravou, _ = await avaliar_indicador(
-                        cliente, avaliacao_id, av.cidade, av.uf, av.ciclo,
-                        grupo, ind, lista_relevante, system_blocks,
+                if gravou:
+                    g_grupo += 1
+                    total_gravados += 1
+                else:
+                    f_grupo += 1
+                    total_falhas += 1
+            except Exception as e:
+                f_grupo += 1
+                total_falhas += 1
+                async with AsyncSessionFactory() as session:
+                    await _log(
+                        session, avaliacao_id, "warn",
+                        f"falha em {ind['codigo']}: {type(e).__name__}: {str(e)[:200]}"
                     )
-                    if gravou:
-                        g_macro += 1
-                    else:
-                        f_macro += 1
-                except Exception as e:
-                    f_macro += 1
-                    async with AsyncSessionFactory() as session:
-                        await _log(
-                            session, avaliacao_id, "warn",
-                            f"[macro {macro_idx+1}] falha em {ind['codigo']}: {type(e).__name__}: {str(e)[:200]}"
-                        )
-        return g_macro, f_macro
-
-    # 4 macro-grupos em paralelo (asyncio.gather)
-    resultados = await asyncio.gather(
-        *[processar_macro(i, mg) for i, mg in enumerate(macro_grupos)],
-        return_exceptions=True
-    )
-
-    total_gravados, total_falhas = 0, 0
-    for r in resultados:
-        if isinstance(r, Exception):
-            async with AsyncSessionFactory() as session:
-                await _log(session, avaliacao_id, "error", f"macro falhou: {type(r).__name__}: {str(r)[:200]}")
-            continue
-        g, f = r
-        total_gravados += g
-        total_falhas += f
+        async with AsyncSessionFactory() as session:
+            await _log(
+                session, avaliacao_id, "info",
+                f"  ✓ {grupo['dim_nome']}: {g_grupo} ✓ / {f_grupo} ✗ · {cliente.resumo_uso()}"
+            )
 
     async with AsyncSessionFactory() as session:
         await _log(
             session, avaliacao_id, "info",
-            f"Avaliação multi-agente concluída: "
-            f"{total_gravados}/{total_gravados+total_falhas} pontuados · "
+            f"Avaliação concluída: {total_gravados}/{total_gravados+total_falhas} pontuados · "
             f"{cliente.resumo_uso()}"
         )
         await _set_status(session, avaliacao_id, "aguardando_revisao")
